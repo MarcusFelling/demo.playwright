@@ -24,6 +24,7 @@ jobs:
           output_location: "" # Built app content directory
 
   test:
+    name: "Test site using Playwright"
     timeout-minutes: 60
     needs: build_and_deploy
     runs-on: ubuntu-20.04
