@@ -34,11 +34,11 @@ jobs:
         if: always()
         with:
           name: playwright-test-report
-          path: playwright-report/index.html
+          path: e2e-examples/playwright-report/index.html
 
       - uses: actions/upload-artifact@v2
         name: If failure, upload trace.zip to troubleshoot
         if: failure()
         with:
           name: playwright-test-trace
-          path: test-results/
+          path: e2e-examples/test-results/
