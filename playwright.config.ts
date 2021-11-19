@@ -55,6 +55,12 @@ const config: PlaywrightTestConfig = {
         ...devices['Desktop Safari'],
       },
     },
+    {
+      name: 'Desktop Edge',
+      use: {
+        ...devices['Desktop Edge'],
+      },
+    },    
     // Test against mobile viewports.
     {
       name: 'Mobile Chrome',
