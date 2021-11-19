@@ -1,0 +1,24 @@
+{
+  "name": "Demo.Playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:e2e-examples": "playwright test --config e2e-examples\\playwright.config.ts",
+    "test:e2e": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcusFelling/Demo.Playwright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcusFelling/Demo.Playwright/issues"
+  },
+  "homepage": "https://github.com/MarcusFelling/Demo.Playwright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.16.3"
+  }
+}
