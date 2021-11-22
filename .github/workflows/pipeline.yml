@@ -31,7 +31,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     environment:
       name: test
-      url: https://demo.marcusfelling.com/
+      url: https://testresults.marcusfelling.com/
     env:
       SITE_URL: https://demo.marcusfelling.com/ # Playwright tests use this env var    
     steps:
