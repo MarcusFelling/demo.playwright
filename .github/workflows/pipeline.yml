@@ -50,11 +50,20 @@ jobs:
           HOME=/root npx playwright test --config playwright.config.ts --reporter=html
 
       - uses: actions/upload-artifact@v2
-        name: Upload HTML report
+        name: Upload HTML report as artifact
         if: always()
         with:
           name: playwright-test-report
           path: e2e-examples/playwright-report/index.html
+
+      - name: Publish HTML report to testresults.marcusfelling.com
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: e2e-examples/playwright-report/
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
 
       - uses: actions/upload-artifact@v2
         name: If failure, upload trace.zip to troubleshoot
