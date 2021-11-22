@@ -1,6 +1,6 @@
 # Demo.Playwright 🎭
 
-This repo is used to demo [Playwright's](https://playwright.dev/) capabilities. This project is leveraging the [Playwright Test](https://playwright.dev/docs/intro) test runner and tests authored in TypeScript. It uses the same [example tests](./e2e-examples) that are created when scaffolding a project using `npm init playwright`:
+This repo is used to demo [Playwright's](https://playwright.dev/) capabilities. The project is leveraging the [Playwright Test](https://playwright.dev/docs/intro) test runner and tests authored in TypeScript. It uses the same [example tests](./e2e-examples) that are created when scaffolding a project using `npm init playwright`:
 
 ```bash
 ├── e2e-examples
