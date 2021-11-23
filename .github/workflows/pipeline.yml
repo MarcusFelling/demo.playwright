@@ -49,12 +49,12 @@ jobs:
         run: |   
           HOME=/root npx playwright test --config playwright.config.ts --reporter=html
 
-      - name: Upload HTML report as artifact
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: playwright-test-report
-          path: e2e-examples/playwright-report/index.html
+          path: e2e-examples/playwright-report/
 
       - name: Publish HTML report to testresults.marcusfelling.com
         if: always()
@@ -65,10 +65,3 @@ jobs:
           keep_files: true
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-
-      - name: If failure, upload trace.zip to troubleshoot. Click and drag .zip to https://trace.playwright.dev/
-        uses: actions/upload-artifact@v2        
-        if: failure()
-        with:
-          name: playwright-test-trace
-          path: e2e-examples/test-results/
