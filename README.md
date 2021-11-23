@@ -17,4 +17,3 @@ The [pipline.yml](.github/workflows/pipeline.yml) GitHub Action workflow is used
 1. Run Playwright tests against demo.marcusfelling.com, using [HTML reporter](https://playwright.dev/docs/test-reporters/#html-reporter)
 1. Upload HTML report as artifact
 1. Publish the HTML report to [testresults.marcusfelling.com](https://testresults.marcusfelling.com/)
-1. If there is a test failure, upload trace.zip as artifact to help troubleshoot
