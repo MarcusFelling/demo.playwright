@@ -11,7 +11,13 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 2 : 0,
   // Artifacts folder where screenshots, videos, and traces are stored.
   outputDir: 'test-results/',
-
+  // Run your local dev server before starting the tests:
+  // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
+  webServer: {
+    command: 'node ./server',
+    port: 4345,
+    cwd: __dirname,
+  },
   use: {
     // Run headless by default
     headless: true,
