@@ -44,10 +44,9 @@ jobs:
         run: npm ci     
 
       - name: Run Playwright Tests        
-        continue-on-error: false
-        working-directory: e2e-examples
+        continue-on-error: false        
         run: |   
-          HOME=/root npx playwright test --config playwright.config.ts --reporter=html
+          HOME=/root npx playwright test --reporter=html
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
