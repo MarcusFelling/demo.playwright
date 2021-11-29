@@ -1,13 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-/**
- * Inside every test you get a new isolated page instance.
- * @see https://playwright.dev/docs/intro
- * @see https://playwright.dev/docs/api/class-page
- */
 test('basic test', async ({ page }) => {
   await page.goto('https://todomvc.com/examples/vanilla-es6/');
 
+  // Use locators to represent a selector and re-use them
   const inputBox = page.locator('input.new-todo');
   const todoList = page.locator('.todo-list');
 
