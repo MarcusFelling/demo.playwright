@@ -43,8 +43,6 @@ jobs:
       - name: Install dependencies
         run: | 
           npm ci
-          # Install browsers for channels
-          npx playwright install chrome
 
       - name: Run Playwright Tests        
         continue-on-error: false
