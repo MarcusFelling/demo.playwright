@@ -44,7 +44,6 @@ jobs:
         run: | 
           npm ci
           # Install browsers for channels
-          npx playwright install msedge
           npx playwright install chrome
 
       - name: Run Playwright Tests        

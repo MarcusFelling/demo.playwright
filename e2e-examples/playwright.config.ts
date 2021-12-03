@@ -87,12 +87,12 @@ const config: PlaywrightTestConfig = {
     },
 
     /* Test against branded browsers. */
-    {
-      name: 'Microsoft Edge',
-      use: {
-        channel: 'msedge',
-      },
-    },
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: {
+    //     channel: 'msedge',
+    //   },
+    // },
     {
       name: 'Google Chrome',
       use: {
