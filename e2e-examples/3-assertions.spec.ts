@@ -33,7 +33,7 @@ test('should be able to use assertions', async ({ page }) => {
   await test.step('toBeChecked', async () => {
     const firstItemCheckbox = page.locator('input[type=checkbox]:left-of(:text("Buy milk"))');
     await expect(firstItemCheckbox).not.toBeChecked();
-    await firstItemCheckbox.check();
+    await page.check('div input[type="checkbox"]');
     await expect(firstItemCheckbox).toBeChecked();
   });
 

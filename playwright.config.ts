@@ -1,76 +1,105 @@
 import { PlaywrightTestConfig, devices } from '@playwright/test';
-import path from 'path';
 
-// Reference: https://playwright.dev/docs/test-configuration
+/**
+ * See https://playwright.dev/docs/test-configuration.
+ */
 const config: PlaywrightTestConfig = {
-  // Timeout per test
-  timeout: 30 * 1000,
-  // Test directory
-  testDir: path.join(__dirname, 'e2e-examples'),
-  // If a test fails on CI, retry it additional 2 times
-  retries: process.env.CI ? 2 : 0,
-  // Artifacts folder where screenshots, videos, and traces are stored.
-  outputDir: 'test-results/',
-  // Run your local dev server before starting the tests:
-  // https://playwright.dev/docs/test-advanced#launching-a-development-web-server-during-the-tests
-  webServer: {
-    command: 'node ./server',
-    port: 4345,
-    cwd: __dirname,
-  },
-  use: {
-    // Run headless by default
-    headless: true,
-        
-    // Retry a test if its failing with enabled tracing. This allows you to analyse the DOM, console logs, network traffic etc.
-    // More information: https://playwright.dev/docs/trace-viewer
-    trace: 'on-first-retry',
 
+  testDir: './e2e-examples',
+
+  /* Maximum time one test can run for. */
+  timeout: 30 * 1000,
+
+  expect: {
+
+    /**
+     * Maximum time expect() should wait for the condition to be met.
+     * For example in `await expect(locator).toHaveText();`
+     */
+    timeout: 5000
+  },
+
+  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  forbidOnly: !!process.env.CI,
+
+  /* Retry on CI only */
+  retries: process.env.CI ? 2 : 0,
+
+  /* Opt out of parallel tests on CI. */
+  workers: process.env.CI ? 1 : undefined,
+
+  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  reporter: 'html',
+
+  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  use: {
+
+    /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
+    actionTimeout: 0,
+
+    /* Base URL to use in actions like `await page.goto('/')`. */
     // Use env var to set baseURL
     baseURL: process.env.SITE_URL,
 
-    // All available context options: https://playwright.dev/docs/api/class-browser#browser-new-context
-    contextOptions: {
-      ignoreHTTPSErrors: true,
-    },
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    trace: 'on-first-retry',
   },
 
+  /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Desktop Chrome',
+      name: 'chromium',
+
+      /* Project-specific settings. */
       use: {
         ...devices['Desktop Chrome'],
       },
     },
+
     {
-      name: 'Desktop Firefox',
+      name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
       },
     },
+
     {
-      name: 'Desktop Safari',
+      name: 'webkit',
       use: {
         ...devices['Desktop Safari'],
       },
     },
-    {
-      name: 'Desktop Edge',
-      use: {
-        ...devices['Desktop Edge'],
-      },
-    },    
-    // Test against mobile viewports.
-    {
-      name: 'Mobile Chrome',
-      use: {
-        ...devices['Pixel 5'],
-      },
-    },
-    {
-      name: 'Mobile Safari',
-      use: devices['iPhone 12'],
-    },
+
+    /* Test against mobile viewports. */
+    // {
+    //   name: 'Mobile Chrome',
+    //   use: {
+    //     ...devices['Pixel 5'],
+    //   },
+    // },
+    // {
+    //   name: 'Mobile Safari',
+    //   use: {
+    //     ...devices['iPhone 12'],
+    //   },
+    // },
+
+    /* Test against branded browsers. */
+    // {
+    //   name: 'Microsoft Edge',
+    //   use: {
+    //     channel: 'msedge',
+    //   },
+    // },
+    // {
+    //   name: 'Google Chrome',
+    //   use: {
+    //     channel: 'chrome',
+    //   },
+    // },
   ],
+
+  /* Folder for test artifacts such as screenshots, videos, traces, etc. */
+  // outputDir: 'test-results/'
 };
 export default config;

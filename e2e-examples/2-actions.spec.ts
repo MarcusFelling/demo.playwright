@@ -36,9 +36,6 @@ test('element selectors', async ({ page }) => {
   // select by text with the text selector engine:
   await page.click('text=All');
 
-  // css allows you to select by attribute:
-  await page.click('[id="toggle-all"]');
-
   // Combine css and text selectors (https://playwright.dev/docs/selectors/#text-selector)
   await page.click('.todo-list > li:has-text("Playwright")');
   await page.click('.todoapp .footer >> text=Completed');
