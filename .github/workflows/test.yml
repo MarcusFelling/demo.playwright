@@ -114,11 +114,13 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: basic
+          path: basic
       - name: Publish basic
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: basic
           destination_dir: basic
           keep_files: true
           user_name: 'github-actions[bot]'
@@ -127,11 +129,13 @@ jobs:
       - uses: actions/download-artifact@v2        
         with:
           name: todomvc
+          path: todomvc
       - name: Publish todomvc
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: todomvc
           destination_dir: todomvc
           keep_files: true
           user_name: 'github-actions[bot]'
@@ -140,11 +144,13 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: svgomg
+          path: svgomg
       - name: Publish svgomg
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: svgomg
           destination_dir: svgomg
           keep_files: true
           user_name: 'github-actions[bot]'
