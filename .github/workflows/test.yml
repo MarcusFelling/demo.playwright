@@ -17,9 +17,6 @@ jobs:
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
-        with:
-          args: --allow-unrelated-histories
-
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
@@ -38,19 +35,8 @@ jobs:
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: playwright-test-report
+          name: ${{ env.TESTGROUP }}
           path: ${{ env.TESTGROUP }}/playwright-report/
-
-      - name: Publish HTML report to testresults.marcusfelling.com
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.TESTGROUP }}/playwright-report/
-          destination_dir: ${{ env.TESTGROUP }}
-          keep_files: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
 
   todomvcTests:
     name: "todomvc tests"
@@ -65,8 +51,6 @@ jobs:
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
-        with:
-          args: --allow-unrelated-histories      
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
@@ -85,19 +69,8 @@ jobs:
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: playwright-test-report
+          name: ${{ env.TESTGROUP }}
           path: ${{ env.TESTGROUP }}/playwright-report/
-
-      - name: Publish HTML report to testresults.marcusfelling.com
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.TESTGROUP }}/playwright-report/
-          destination_dir: ${{ env.TESTGROUP }}
-          keep_files: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
 
   svgomgTests:
     name: "svgomg tests"
@@ -112,9 +85,6 @@ jobs:
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
-        with:
-          args: --allow-unrelated-histories
-
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
@@ -133,16 +103,51 @@ jobs:
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: playwright-test-report
+          name: ${{ env.TESTGROUP }}
           path: ${{ env.TESTGROUP }}/playwright-report/
 
-      - name: Publish HTML report to testresults.marcusfelling.com
+  publishTestResults:
+    name: "Publish Test Results to to testresults.marcusfelling.com"
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          path: basic
+      - name: Publish basic
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.TESTGROUP }}/playwright-report/
-          destination_dir: ${{ env.TESTGROUP }}
+          publish_dir: ./basic/playwright-report/
+          destination_dir: basic
           keep_files: true
           user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          user_email: 'github-actions[bot]@users.noreply.github.com' 
+
+      - uses: actions/download-artifact@v2
+        with:
+          path: todomvc
+      - name: Publish todomvc
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./todomvc/playwright-report/
+          destination_dir: todomvc
+          keep_files: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com' 
+
+      - uses: actions/download-artifact@v2
+        with:
+          path: svgomgv
+      - name: Publish svgomgv
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./svgomg/playwright-report/
+          destination_dir: svgomg
+          keep_files: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'                      
