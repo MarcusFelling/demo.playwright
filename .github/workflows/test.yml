@@ -33,7 +33,7 @@ jobs:
           
           # inject link into HTML report
           LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i 's+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g' playwright-report/index.html
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
@@ -71,7 +71,7 @@ jobs:
 
           # inject link into HTML report
           LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i 's+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g' playwright-report/index.html
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
@@ -109,7 +109,7 @@ jobs:
           
           # inject link into HTML report
           LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i 's+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g' playwright-report/index.html
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
