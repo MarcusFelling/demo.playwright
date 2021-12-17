@@ -112,8 +112,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/download-artifact@v2
-        with:
-          path: basic
+        name: basic
       - name: Publish basic
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
@@ -125,9 +124,8 @@ jobs:
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com' 
 
-      - uses: actions/download-artifact@v2
-        with:
-          path: todomvc
+      - uses: actions/download-artifact@v2        
+        name: todomvc
       - name: Publish todomvc
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
@@ -140,8 +138,7 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com' 
 
       - uses: actions/download-artifact@v2
-        with:
-          path: svgomgv
+        name: svgomgv
       - name: Publish svgomgv
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
