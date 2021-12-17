@@ -36,7 +36,7 @@ jobs:
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
+          path: ${{ env.TESTGROUP }}
 
   todomvcTests:
     name: "todomvc tests"
@@ -70,7 +70,7 @@ jobs:
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
+          path: ${{ env.TESTGROUP }}
 
   svgomgTests:
     name: "svgomg tests"
@@ -104,7 +104,7 @@ jobs:
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
+          path: ${{ env.TESTGROUP }}
 
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
