@@ -48,3 +48,91 @@ jobs:
           keep_files: true
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
+
+  todomvcTests:
+    name: "todomvc Tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP:  todomvc
+    environment:
+      name: todomvc
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: | 
+          npm ci
+
+      - name: Run todomvc Tests        
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}       
+        run: |   
+          HOME=/root npx playwright test
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: playwright-test-report
+          path: ${{ env.TESTGROUP }}/playwright-report/
+
+      - name: Publish HTML report to testresults.marcusfelling.com
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ env.TESTGROUP }}/playwright-report/
+          destination_dir: ${{ env.TESTGROUP }}
+          keep_files: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+
+  svgomgTests:
+    name: "svgomg Tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP:  svgomg
+    environment:
+      name: svgomg
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: | 
+          npm ci
+
+      - name: Run svgomg Tests        
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}       
+        run: |   
+          HOME=/root npx playwright test
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: playwright-test-report
+          path: ${{ env.TESTGROUP }}/playwright-report/
+
+      - name: Publish HTML report to testresults.marcusfelling.com
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ env.TESTGROUP }}/playwright-report/
+          destination_dir: ${{ env.TESTGROUP }}
+          keep_files: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
