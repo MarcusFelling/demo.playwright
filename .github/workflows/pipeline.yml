@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 jobs:
   basicTests:
-    name: "Basic Tests"
+    name: "basic tests"
     timeout-minutes: 60
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
@@ -50,7 +50,7 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
 
   todomvcTests:
-    name: "todomvc Tests"
+    name: "todomvc tests"
     timeout-minutes: 60
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
@@ -94,7 +94,7 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
 
   svgomgTests:
-    name: "svgomg Tests"
+    name: "svgomg tests"
     timeout-minutes: 60
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
