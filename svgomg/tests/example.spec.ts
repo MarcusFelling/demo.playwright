@@ -4,7 +4,7 @@ import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('https://demo.playwright.dev/svgomg');
+  await page.goto('');
 });
 
 test('verify menu items', async ({ page }) => {

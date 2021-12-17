@@ -56,6 +56,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP:  todomvc
+      SITE_URL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
     environment:
       name: ${{ env.TESTGROUP }}
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -100,6 +101,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP:  svgomg
+      SITE_URL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL 
     environment:
       name: ${{ env.TESTGROUP }}
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
