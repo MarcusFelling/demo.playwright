@@ -13,7 +13,7 @@ jobs:
     env:
       TESTGROUP:  basic
     environment:
-      name: ${{ env.TESTGROUP }}
+      name: basic
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
@@ -58,7 +58,7 @@ jobs:
       TESTGROUP:  todomvc
       SITE_URL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
     environment:
-      name: ${{ env.TESTGROUP }}
+      name: todomvc
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
@@ -103,7 +103,7 @@ jobs:
       TESTGROUP:  svgomg
       SITE_URL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL 
     environment:
-      name: ${{ env.TESTGROUP }}
+      name: svgomg
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
