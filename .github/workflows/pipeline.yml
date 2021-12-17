@@ -5,14 +5,16 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  test:
-    name: "Run Playwright Tests"
+  basicTests:
+    name: "Run Playwright Tests - Basic"
     timeout-minutes: 60
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP:  basic
     environment:
-      name: test
-      url: https://testresults.marcusfelling.com/
+      name: basic
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
@@ -25,7 +27,7 @@ jobs:
 
       - name: Run Basic Tests        
         continue-on-error: false
-        working-directory: basic       
+        working-directory: ${{ env.TESTGROUP }}       
         run: |   
           HOME=/root npx playwright test
 
@@ -34,15 +36,15 @@ jobs:
         if: always()
         with:
           name: playwright-test-report
-          path: basic/playwright-report/
+          path: ${{ env.TESTGROUP }}/playwright-report/
 
       - name: Publish HTML report to testresults.marcusfelling.com
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: basic/playwright-report/
-          destination_dir: basic
+          publish_dir: ${{ env.TESTGROUP }}/playwright-report/
+          destination_dir: ${{ env.TESTGROUP }}
           keep_files: true
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
