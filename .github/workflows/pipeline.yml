@@ -5,35 +5,14 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  build_and_deploy:    
-    runs-on: ubuntu-20.04
-    name: Build and deploy to Azure Static Web Apps
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          submodules: true
-      - name: Build And Deploy
-        uses: Azure/static-web-apps-deploy@v1
-        with:
-          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_SALMON_FOREST_027350010 }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"          
-          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
-          app_location: "/e2e-examples/server/assets" # App source code path
-          api_location: "" # Api source code path - optional
-          output_location: "" # Built app content directory
-
   test:
-    name: "Test site using Playwright"
+    name: "Run Playwright Tests"
     timeout-minutes: 60
-    needs: build_and_deploy
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
     environment:
       name: test
       url: https://testresults.marcusfelling.com/
-    env:
-      SITE_URL: https://demo.marcusfelling.com/ # Playwright tests use this env var    
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
@@ -44,25 +23,26 @@ jobs:
         run: | 
           npm ci
 
-      - name: Run Playwright Tests        
+      - name: Run Basic Tests        
         continue-on-error: false
-        working-directory: e2e-examples       
+        working-directory: basic       
         run: |   
-          HOME=/root npx playwright test --reporter=html --config playwright.config.ts
+          HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: playwright-test-report
-          path: e2e-examples/playwright-report/
+          path: basic/playwright-report/
 
       - name: Publish HTML report to testresults.marcusfelling.com
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: e2e-examples/playwright-report/
+          publish_dir: basic/playwright-report/
+          destination_dir: basic
           keep_files: true
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
