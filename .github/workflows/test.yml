@@ -36,7 +36,7 @@ jobs:
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}
+          path: ${{ env.TESTGROUP }}/playwright-report
 
   todomvcTests:
     name: "todomvc tests"
@@ -70,7 +70,7 @@ jobs:
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}
+          path: ${{ env.TESTGROUP }}/playwright-report
 
   svgomgTests:
     name: "svgomg tests"
@@ -104,7 +104,7 @@ jobs:
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}
+          path: ${{ env.TESTGROUP }}/playwright-report
 
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
@@ -114,6 +114,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: basic
+          path: basic
       - name: Publish basic
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
@@ -128,6 +129,7 @@ jobs:
       - uses: actions/download-artifact@v2        
         with:
           name: todomvc
+          path: todomvc
       - name: Publish todomvc
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
@@ -142,6 +144,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: svgomg
+          path: svgomg
       - name: Publish svgomg
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
