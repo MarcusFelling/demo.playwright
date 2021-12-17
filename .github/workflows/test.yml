@@ -17,6 +17,9 @@ jobs:
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
+        with:
+          args: --allow-unrelated-histories
+
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
@@ -62,6 +65,8 @@ jobs:
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
+        with:
+          args: --allow-unrelated-histories      
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
@@ -107,6 +112,9 @@ jobs:
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
+        with:
+          args: --allow-unrelated-histories
+
       - uses: actions/setup-node@v2
         with:
           node-version: '14.x'
