@@ -1,0 +1,169 @@
+name: Demo.Playwright
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  basicTests:
+    name: "basic tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP:  basic
+    environment:
+      name: basic
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: | 
+          npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests        
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}       
+        run: |   
+          HOME=/root npx playwright test
+          
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: ${{ env.TESTGROUP }}/playwright-report
+
+  todomvcTests:
+    name: "todomvc tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP:  todomvc
+      SITE_URL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
+    environment:
+      name: todomvc
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: | 
+          npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests        
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}       
+        run: |   
+          HOME=/root npx playwright test
+
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: ${{ env.TESTGROUP }}/playwright-report
+
+  svgomgTests:
+    name: "svgomg tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP:  svgomg
+      SITE_URL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL 
+    environment:
+      name: svgomg
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      - name: Install dependencies
+        run: | 
+          npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests        
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}       
+        run: |   
+          HOME=/root npx playwright test
+          
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: ${{ env.TESTGROUP }}/playwright-report
+
+  publishTestResults:
+    name: "Publish Test Results to to testresults.marcusfelling.com"
+    needs: [svgomgTests, basicTests, todomvcTests]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: basic
+          path: basic
+      - name: Publish basic
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: basic
+          destination_dir: basic
+          keep_files: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com' 
+
+      - uses: actions/download-artifact@v2        
+        with:
+          name: todomvc
+          path: todomvc
+      - name: Publish todomvc
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: todomvc
+          destination_dir: todomvc
+          keep_files: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com' 
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: svgomg
+          path: svgomg
+      - name: Publish svgomg
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3.7.3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: svgomg
+          destination_dir: svgomg
+          keep_files: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'                      
