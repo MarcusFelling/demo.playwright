@@ -160,7 +160,7 @@ jobs:
 
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
-    needs: [svgomgTests, basicTests, todomvcTests]
+    needs: [svgomgTests, basicTests, todomvcTests, githubAPITests]
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/download-artifact@v2
