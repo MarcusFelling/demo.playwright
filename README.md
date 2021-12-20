@@ -1,5 +1,5 @@
 # 🎭 Demo.Playwright
-This repo is used to demo [Playwright's](https://playwright.dev/) capabilities. The project uses the [Playwright Test](https://playwright.dev/docs/intro) test runner and tests authored in TypeScript.
+This repo is used to demo [Playwright's](https://playwright.dev/) end-to-end testing capabilities. The project uses the [Playwright Test](https://playwright.dev/docs/intro) test runner and tests authored in TypeScript.
 
 The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used to:
 
