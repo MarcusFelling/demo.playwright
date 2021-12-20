@@ -1,5 +1,3 @@
-/* eslint-disable notice/notice */
-
 import { PlaywrightTestConfig, devices } from '@playwright/test';
 
 /**

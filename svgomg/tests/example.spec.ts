@@ -1,5 +1,3 @@
-/* eslint-disable notice/notice */
-
 import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
