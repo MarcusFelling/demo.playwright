@@ -5,7 +5,7 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 ## Run Playwright example tests
 
-**[basic](./basic/tests)** - basic tests to show interactions, element selectors, assertions, upload files, read a response, mock a response, and page object model (POM).
+**[basic](./basic)** - basic tests to show interactions, element selectors, assertions, upload files, read a response, mock a response, and page object model (POM).
 
 **[todomvc](./todomvc/tests)** - End-to-end tests for ToDoMVC site, hosted at [https://demo.playwright.dev/todomvc](https://demo.playwright.dev/todomvc)
 
