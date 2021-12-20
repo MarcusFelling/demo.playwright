@@ -1,9 +1,9 @@
 name: Demo.Playwright
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 jobs:
   basicTests:
     name: "basic tests"
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
     env:
-      TESTGROUP:  basic
+      TESTGROUP: basic
     environment:
       name: basic
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -19,18 +19,18 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: "14.x"
 
       - name: Install dependencies
-        run: | 
+        run: |
           npm ci
 
-      - name: Run ${{ env.TESTGROUP }} Tests        
+      - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}       
-        run: |   
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
           HOME=/root npx playwright test
-          
+
           # inject link into HTML report
           LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
     env:
-      TESTGROUP:  todomvc
+      TESTGROUP: todomvc
       SITE_URL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
     environment:
       name: todomvc
@@ -57,16 +57,16 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: "14.x"
 
       - name: Install dependencies
-        run: | 
+        run: |
           npm ci
 
-      - name: Run ${{ env.TESTGROUP }} Tests        
+      - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}       
-        run: |   
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
           HOME=/root npx playwright test
 
           # inject link into HTML report
@@ -86,8 +86,8 @@ jobs:
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
     env:
-      TESTGROUP:  svgomg
-      SITE_URL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL 
+      TESTGROUP: svgomg
+      SITE_URL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL
     environment:
       name: svgomg
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -95,18 +95,18 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: "14.x"
 
       - name: Install dependencies
-        run: | 
+        run: |
           npm ci
 
-      - name: Run ${{ env.TESTGROUP }} Tests        
+      - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}       
-        run: |   
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
           HOME=/root npx playwright test
-          
+
           # inject link into HTML report
           LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
@@ -124,10 +124,10 @@ jobs:
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
     env:
-      TESTGROUP:  github-api   
+      TESTGROUP: github-api
       GITHUB_USER: ${{ secrets.REPO_USER }}
       API_TOKEN: ${{ secrets.API_TOKEN }}
-      SITE_URL: https://api.github.com # Playwright tests use this for baseURL 
+      SITE_URL: https://api.github.com # Playwright tests use this for baseURL
     environment:
       name: github-api
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -135,18 +135,18 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: "14.x"
 
       - name: Install dependencies
-        run: | 
+        run: |
           npm ci
 
-      - name: Run ${{ env.TESTGROUP }} Tests        
+      - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}       
-        run: |   
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
           HOME=/root npx playwright test
-          
+
           # inject link into HTML report
           LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
@@ -176,10 +176,10 @@ jobs:
           publish_dir: basic
           destination_dir: basic
           keep_files: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com' 
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
 
-      - uses: actions/download-artifact@v2        
+      - uses: actions/download-artifact@v2
         with:
           name: todomvc
           path: todomvc
@@ -191,8 +191,8 @@ jobs:
           publish_dir: todomvc
           destination_dir: todomvc
           keep_files: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com' 
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
 
       - uses: actions/download-artifact@v2
         with:
@@ -206,8 +206,8 @@ jobs:
           publish_dir: svgomg
           destination_dir: svgomg
           keep_files: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
 
       - uses: actions/download-artifact@v2
         with:
@@ -221,5 +221,5 @@ jobs:
           publish_dir: github-api
           destination_dir: github-api
           keep_files: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'                                
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
