@@ -5,13 +5,13 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 ## Run Playwright example tests
 
-**[basic](./basic)** - basic tests to show interactions, element selectors, assertions, upload files, read a response, mock a response, and page object model (POM).
+**[basic](./basic/tests)** - basic tests to show interactions, element selectors, assertions, upload files, read a response, mock a response, and page object model (POM).
 
-**[todomvc](./todomvc)** - End-to-end tests for ToDoMVC site, hosted at [https://demo.playwright.dev/todomvc](https://demo.playwright.dev/todomvc)
+**[todomvc](./todomvc/tests)** - End-to-end tests for ToDoMVC site, hosted at [https://demo.playwright.dev/todomvc](https://demo.playwright.dev/todomvc)
 
-**[svgomg](./svgomg)** - End-to-end tests for SVGOMG! site, hosted at [https://demo.playwright.dev/svgomg](https://demo.playwright.dev/svgomg)
+**[svgomg](./svgomg/tests)** - End-to-end tests for SVGOMG! site, hosted at [https://demo.playwright.dev/svgomg](https://demo.playwright.dev/svgomg)
 
-**[github-api](./github-api)** - uses GitHub API to test creation of a new repo, bug, and feature, then deletion of repo.
+**[github-api](./github-api/tests)** - uses GitHub API to test creation of a new repo, bug, and feature, then deletion of repo.
 
 ## Publish each HTML report to their respective directory
 
