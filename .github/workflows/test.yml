@@ -176,6 +176,7 @@ jobs:
           publish_dir: basic
           destination_dir: basic
           keep_files: true
+          enable_jekyll: true
           user_name: "github-actions[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
 
@@ -191,6 +192,7 @@ jobs:
           publish_dir: todomvc
           destination_dir: todomvc
           keep_files: true
+          enable_jekyll: true
           user_name: "github-actions[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
 
@@ -206,6 +208,7 @@ jobs:
           publish_dir: svgomg
           destination_dir: svgomg
           keep_files: true
+          enable_jekyll: true
           user_name: "github-actions[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
 
@@ -221,5 +224,6 @@ jobs:
           publish_dir: github-api
           destination_dir: github-api
           keep_files: true
+          enable_jekyll: true
           user_name: "github-actions[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
