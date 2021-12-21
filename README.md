@@ -21,3 +21,7 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/todomvc](https://testresults.marcusfelling.com/todomvc)
 * [testresults.marcusfelling.com/svgomg](https://testresults.marcusfelling.com/svgomg)
 * [testresults.marcusfelling.com/github-api](https://testresults.marcusfelling.com/github-api)
+
+# Have a testing scenario you'd like to see included?
+
+Please [open an issue](../../issues/new) with details.
