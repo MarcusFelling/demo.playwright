@@ -13,6 +13,8 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[github-api](./github-api/tests/example.spec.ts)** - uses GitHub API to test creation of a new repo, bug, and feature, then deletion of repo.
 
+**[visual-comparison](./visual-comparison/tests/example.spec.ts)** - visually compares snapshots with golden screenshots and text content for playwright.dev landing page.
+
 ## Publish each HTML report to their respective directory
 
 When the above tests are finished, the results are published to GitHub pages:
@@ -21,6 +23,7 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/todomvc](https://testresults.marcusfelling.com/todomvc)
 * [testresults.marcusfelling.com/svgomg](https://testresults.marcusfelling.com/svgomg)
 * [testresults.marcusfelling.com/github-api](https://testresults.marcusfelling.com/github-api)
+* [testresults.marcusfelling.com/visual-comparison](https://testresults.marcusfelling.com/visual-comparison)
 
 # Have a testing scenario you'd like to see included?
 
