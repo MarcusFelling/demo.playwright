@@ -219,6 +219,7 @@ jobs:
           user_email: "github-actions[bot]@users.noreply.github.com"
 
       - uses: actions/download-artifact@v2
+        if: always()
         with:
           name: todomvc
           path: todomvc
@@ -235,6 +236,7 @@ jobs:
           user_email: "github-actions[bot]@users.noreply.github.com"
 
       - uses: actions/download-artifact@v2
+        if: always()
         with:
           name: svgomg
           path: svgomg
@@ -251,6 +253,7 @@ jobs:
           user_email: "github-actions[bot]@users.noreply.github.com"
 
       - uses: actions/download-artifact@v2
+        if: always()
         with:
           name: github-api
           path: github-api
@@ -267,6 +270,7 @@ jobs:
           user_email: "github-actions[bot]@users.noreply.github.com"
 
       - uses: actions/download-artifact@v2
+        if: always()
         with:
           name: visual-comparison
           path: visual-comparison
