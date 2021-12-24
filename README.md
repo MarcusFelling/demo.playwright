@@ -1,5 +1,5 @@
 # 🎭 Demo.Playwright
-This repo is used to demo [Playwright's](https://playwright.dev/) end-to-end testing capabilities. The project uses the [Playwright Test](https://playwright.dev/docs/intro) test runner and tests authored in TypeScript.
+This repo is used to demo [Playwright's](https://playwright.dev/) testing capabilities. The project uses the [Playwright Test](https://playwright.dev/docs/intro) test runner and tests authored in TypeScript.
 
 The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used to:
 
@@ -15,6 +15,9 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[visual-comparison](./visual-comparison/tests/example.spec.ts)** - visually compares snapshots with golden screenshots and text content for playwright.dev landing page.
 
+**[performance](./performance/tests/example.spec.ts)** - web performance tests using Resource Timing API and DevTools, run against
+[https://fastestwebsite.net](https://fastestwebsite.net/)
+
 ## Publish each HTML report to their respective directory
 
 When the above tests are finished, the results are published to GitHub pages:
@@ -24,6 +27,7 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/svgomg](https://testresults.marcusfelling.com/svgomg)
 * [testresults.marcusfelling.com/github-api](https://testresults.marcusfelling.com/github-api)
 * [testresults.marcusfelling.com/visual-comparison](https://testresults.marcusfelling.com/visual-comparison)
+* [testresults.marcusfelling.com/performance](https://testresults.marcusfelling.com/performance)
 
 # Have a testing scenario you'd like to see included?
 
