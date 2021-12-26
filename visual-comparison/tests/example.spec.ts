@@ -6,8 +6,8 @@ test.describe('comparison tests', () => {
     await page.goto('');
   });
 
-  test('compare landing page banner with golden screenshot', async ({ page }) => {
-    expect(await page.locator('.heroBanner_3P7f').screenshot()).toMatchSnapshot('landing.png', { threshold: 0.4 });
+  test('compare landing page title with golden screenshot', async ({ page }) => {
+    expect(await page.locator('.heroTitle_2lCx').screenshot()).toMatchSnapshot('landing.png', { threshold: 0.4 });
   });
 
   test('compare text content of title with golden text file', async ({ page }) => {
