@@ -10,7 +10,7 @@ test.describe('comparison tests', () => {
     expect(await page.locator('.heroTitle_2lCx').screenshot()).toMatchSnapshot('landing.png', { threshold: 0.4 });
   });
 
-  test('compare text content of title with golden text file', async ({ page }) => {
+  test('compare landing page title with golden text file', async ({ page }) => {
     expect(await page.textContent('.hero__title')).toMatchSnapshot('hero.txt');
   });
 
