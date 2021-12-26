@@ -1,4 +1,4 @@
-import { test, expect, chromium } from '@playwright/test';
+import { test, chromium } from '@playwright/test';
 import { playAudit } from 'playwright-lighthouse';
 
 test.describe.parallel('web performance tests', () => {
