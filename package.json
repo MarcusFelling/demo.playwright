@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/MarcusFelling/Demo.Playwright#readme",
   "devDependencies": {
-    "@playwright/test": "^1.17.1"
+    "@playwright/test": "^1.17.1",
+    "playwright-lighthouse": "^2.1.0"
   }
 }

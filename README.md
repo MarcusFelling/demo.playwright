@@ -15,7 +15,7 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[visual-comparison](./visual-comparison/tests/example.spec.ts)** - visually compares snapshots with golden screenshots and text content for playwright.dev landing page.
 
-**[performance](./performance/tests/example.spec.ts)** - web performance tests using Resource Timing API and DevTools, run against
+**[performance](./performance/tests/example.spec.ts)** - web performance tests using resource timing API, DevTools, and lighthouse, run against
 [https://fastestwebsite.net](https://fastestwebsite.net/)
 
 ## Publish each HTML report to their respective directory

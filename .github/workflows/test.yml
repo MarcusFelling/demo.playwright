@@ -232,7 +232,9 @@ jobs:
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
+          path: |
+            ${{ env.TESTGROUP }}/playwright-report
+            ${{ env.TESTGROUP }}/lighthouse
 
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
