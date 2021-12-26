@@ -241,103 +241,16 @@ jobs:
     runs-on: ubuntu-20.04
     if: always()
     steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: basic
-          path: basic
-      - name: Publish basic
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        id: download
+
+      - name: Publish to GH Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: basic
-          destination_dir: basic
+          publish_dir: ${{steps.download.outputs.download-path}}
           keep_files: true
-          enable_jekyll: true
           user_name: "github-actions[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
-
-      - uses: actions/download-artifact@v2
-        if: always()
-        with:
-          name: todomvc
-          path: todomvc
-      - name: Publish todomvc
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: todomvc
-          destination_dir: todomvc
-          keep_files: true
-          enable_jekyll: true
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
-
-      - uses: actions/download-artifact@v2
-        if: always()
-        with:
-          name: svgomg
-          path: svgomg
-      - name: Publish svgomg
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: svgomg
-          destination_dir: svgomg
-          keep_files: true
-          enable_jekyll: true
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
-
-      - uses: actions/download-artifact@v2
-        if: always()
-        with:
-          name: github-api
-          path: github-api
-      - name: Publish github-api
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: github-api
-          destination_dir: github-api
-          keep_files: true
-          enable_jekyll: true
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
-
-      - uses: actions/download-artifact@v2
-        if: always()
-        with:
-          name: visual-comparison
-          path: visual-comparison
-      - name: Publish visual-comparison
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: visual-comparison
-          destination_dir: visual-comparison
-          keep_files: true
-          enable_jekyll: true
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"          
-
-      - uses: actions/download-artifact@v2
-        if: always()
-        with:
-          name: performance
-          path: performance
-      - name: Publish performance
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: performance
-          destination_dir: performance
-          keep_files: true
-          enable_jekyll: true
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"  
