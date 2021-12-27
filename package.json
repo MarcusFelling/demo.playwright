@@ -23,6 +23,8 @@
     "playwright-lighthouse": "^2.1.0"
   },
   "dependencies": {
+    "axe-playwright": "^1.1.9",
+    "expect-axe-playwright": "^1.2.1",
     "lighthouse": "^9.2.0"
   }
 }
