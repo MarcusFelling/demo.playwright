@@ -1,4 +1,5 @@
 # 🎭 Demo.Playwright
+
 This repo is used to demo [Playwright's](https://playwright.dev/) testing capabilities. The project uses the [Playwright Test](https://playwright.dev/docs/intro) test runner and tests authored in TypeScript.
 
 The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used to:
@@ -18,6 +19,8 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 **[performance](./performance/tests/example.spec.ts)** - web performance tests using resource timing API, DevTools, and lighthouse, run against
 [https://fastestwebsite.net](https://fastestwebsite.net/)
 
+**[accessibility](./accessibility/tests/example.spec.ts)** - runs accessibility checks against [https://www.w3.org/WAI/fundamentals/accessibility-intro/](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
+
 ## Publish each HTML report to their respective directory
 
 When the above tests are finished, the results are published to GitHub pages:
@@ -28,7 +31,8 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/github-api](https://testresults.marcusfelling.com/github-api)
 * [testresults.marcusfelling.com/visual-comparison](https://testresults.marcusfelling.com/visual-comparison)
 * [testresults.marcusfelling.com/performance](https://testresults.marcusfelling.com/performance)
+* [testresults.marcusfelling.com/accessibility](https://testresults.marcusfelling.com/accessibility)
 
-# Have a testing scenario you'd like to see included?
+## Have a testing scenario you'd like to see included?
 
 Please [open an issue](../../issues/new) with details.
