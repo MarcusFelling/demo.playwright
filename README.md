@@ -19,7 +19,7 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 **[performance](./performance/tests/example.spec.ts)** - web performance tests using resource timing API, DevTools, and lighthouse, run against
 [https://fastestwebsite.net](https://fastestwebsite.net/)
 
-**[accessibility](./accessibility/tests/example.spec.ts)** - runs accessibility checks against [https://www.w3.org/WAI/fundamentals/accessibility-intro/](https://www.w3.org/WAI/fundamentals/accessibility-intro/)
+**[accessibility](./accessibility/tests/example.spec.ts)** - runs accessibility checks , run against [https://www.w3.org](https://www.w3.org)
 
 ## Publish each HTML report to their respective directory
 
