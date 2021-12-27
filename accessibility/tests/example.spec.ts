@@ -4,7 +4,7 @@ import { injectAxe, checkA11y } from 'axe-playwright';
 
 test.describe.parallel('accessibility checks', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://www.w3.org/TR/WCAG21/');
+    await page.goto('');
   });
 
   // accessibility.snapshot() https://playwright.dev/docs/api/class-accessibility
