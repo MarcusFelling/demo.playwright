@@ -12,7 +12,7 @@ import { test, expect } from '@playwright/test';
 const user = process.env.GITHUB_USER;
 const repo = 'Test-Repo-1';
 
-test.use({ 
+test.use({
   extraHTTPHeaders: {
     'Accept': 'application/vnd.github.v3+json',
     // Add authorization token to all requests.

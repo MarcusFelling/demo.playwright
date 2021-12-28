@@ -13,5 +13,4 @@ test.describe('comparison tests', () => {
   test('compare landing page title with golden text file', async ({ page }) => {
     expect(await page.textContent('.hero__title')).toMatchSnapshot('hero.txt');
   });
-
 });

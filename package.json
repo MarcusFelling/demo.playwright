@@ -1,11 +1,10 @@
 {
-  "name": "Demo.Playwright",
+  "name": "demo.playwright",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:e2e-examples": "playwright test --config e2e-examples\\playwright.config.ts",
-    "test:e2e": "playwright test"
+    "test:basic": "playwright test --config basic\\playwright.config.ts"
   },
   "repository": {
     "type": "git",
