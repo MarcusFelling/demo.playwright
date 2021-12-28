@@ -242,7 +242,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: accessibility
-      SITE_URL: https://www.w3.org/TR/WCAG21/ # Playwright tests use this for baseURL
+      SITE_URL: https://www.w3.org/WAI/ # Playwright tests use this for baseURL
     environment:
       name: accessibility
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}

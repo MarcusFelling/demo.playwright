@@ -1,4 +1,8 @@
-// Docs: https://playwright.dev/docs/test-snapshots
+/**
+ * In this test we use expect(value).toMatchSnapshot(snapshotName)
+ * to visually compare screenshots
+ * @see https://playwright.dev/docs/test-snapshots
+*/
 import { test, expect } from '@playwright/test';
 
 test.describe('comparison tests', () => {
