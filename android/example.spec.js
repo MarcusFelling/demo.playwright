@@ -1,4 +1,4 @@
-import { _android as android } from '@playwright/test';
+const { _android: android } = require('@playwright/test');
 
 (async () => {
   // Connect to the device.
