@@ -27,7 +27,9 @@ jobs:
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
+          working-directory: android
           api-level: 29
+          script: ./boot.sh
 
       # - name: Run ${{ env.TESTGROUP }} Tests
       #   continue-on-error: false
