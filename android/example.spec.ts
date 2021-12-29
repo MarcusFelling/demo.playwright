@@ -1,6 +1,6 @@
-const { _android: android } = require('@playwright/test');
+import { _android as android, test } from '@playwright/test';
 
-(async () => {
+test('Run android tests', async () => {
   // Connect to the device.
   const [device] = await android.devices();
   console.log(`Model: ${device.model()}`);
@@ -45,4 +45,4 @@ const { _android: android } = require('@playwright/test');
 
   // Close the device.
   await device.close();
-})();
+});
