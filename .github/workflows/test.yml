@@ -31,20 +31,10 @@ jobs:
           api-level: 29
           script: npx playwright test
 
-      # - name: Run ${{ env.TESTGROUP }} Tests
-      #   continue-on-error: false
-      #   working-directory: ${{ env.TESTGROUP }}
-      #   run: |
-      #     HOME=/root npx playwright test
-
-      #     # inject link into HTML report
-      #     LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-      #     sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
-      # - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-      #   uses: actions/upload-artifact@v2
-      #   if: always()
-      #   with:
-      #     name: ${{ env.TESTGROUP }}
-      #     path: |
-      #       ${{ env.TESTGROUP }}/playwright-report
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: |
+            ${{ env.TESTGROUP }}/playwright-report
