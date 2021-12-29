@@ -28,7 +28,6 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: ./gradlew connectedCheck
 
       # - name: Run ${{ env.TESTGROUP }} Tests
       #   continue-on-error: false
