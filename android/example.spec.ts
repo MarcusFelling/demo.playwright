@@ -11,7 +11,7 @@ test('Run android tests', async () => {
   console.log(`Model: ${device.model()}`);
   console.log(`Serial: ${device.serial()}`);
   // increase default timeout to 5 minutes
-  await device.setDefaultTimeout(300000)
+  device.setDefaultTimeout(300000)
   // Take screenshot of the whole device.
   await device.screenshot({ path: 'device.png' });
 
