@@ -1,3 +1,7 @@
+/**
+ * Example automation on Android with WebView and Chrome browser.
+ * @see https://playwright.dev/docs/api/class-android#android-devices
+ */
 import { _android as android, test } from '@playwright/test';
 
 test('Run android tests', async () => {
