@@ -8,7 +8,7 @@ jobs:
   androidTests:
     name: "android tests"
     timeout-minutes: 60
-    runs-on: macos-latest
+    runs-on: macos-11
     env:
       TESTGROUP: android
     environment:
@@ -29,7 +29,7 @@ jobs:
         with:
           working-directory: android
           api-level: 29
-          script: npx playwright test --reporter=html
+          script: npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
