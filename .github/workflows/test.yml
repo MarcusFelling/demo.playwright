@@ -29,7 +29,9 @@ jobs:
         with:
           working-directory: android
           api-level: 29
-          script: npx playwright test
+          script: |
+            adb root
+            npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2

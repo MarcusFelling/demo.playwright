@@ -14,6 +14,25 @@ test('Run android tests', async () => {
   await device.screenshot({ path: 'device.png' });
 
   {
+    // --------------------- WebView -----------------------
+
+    // Launch an application with WebView.
+    await device.shell('am force-stop org.chromium.webview_shell');
+    await device.shell('am start org.chromium.webview_shell/.WebViewBrowserActivity');
+    // Get the WebView.
+    const webview = await device.webView({ pkg: 'org.chromium.webview_shell' });
+
+    // Fill the input box.
+    await device.fill({ res: 'org.chromium.webview_shell:id/url_field' }, 'github.com/microsoft/playwright');
+    await device.press({ res: 'org.chromium.webview_shell:id/url_field' }, 'Enter');
+
+    // Work with WebView's page as usual.
+    const page = await webview.page();
+    await page.waitForNavigation({ url: /.*microsoft\/playwright.*/ });
+    console.log(await page.title());
+  }
+
+  {
     // --------------------- Browser -----------------------
 
     // Launch Chrome browser.
