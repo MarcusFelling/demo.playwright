@@ -30,6 +30,7 @@ jobs:
           working-directory: android
           api-level: 30
           target: 'playstore'
+          profile: 'Pixel 4'
           script: |
             npx playwright test
 
