@@ -39,4 +39,4 @@ jobs:
         with:
           name: ${{ env.TESTGROUP }}
           path: |
-            ${{ env.TESTGROUP }}/playwright-report
+            ${{ env.TESTGROUP }}
