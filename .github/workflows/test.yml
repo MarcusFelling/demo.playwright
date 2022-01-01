@@ -29,7 +29,7 @@ jobs:
         with:
           working-directory: android
           api-level: 30
-          target: 'playstore'
+          target: 'google_apis'
           script: |
             npx playwright test
 
