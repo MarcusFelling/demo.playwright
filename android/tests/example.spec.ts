@@ -11,7 +11,7 @@ test.describe('Run native Android tests', async () => {
     console.log(`Model: ${device.model()}`);
     console.log(`Serial: ${device.serial()}`);
     // Take screenshot of the whole device.
-    await device.screenshot({ path: 'device.png' });  
+    //await device.screenshot({ path: 'device.png' });  
 
     // Launch an application with WebView.
     await device.shell('am force-stop org.chromium.webview_shell');
