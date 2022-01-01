@@ -25,12 +25,13 @@ jobs:
           npm ci
 
       - name: run tests
-        uses: reactivecircus/android-emulator-runner@v2.22.0
+        uses: reactivecircus/android-emulator-runner@v2.22
         with:
           working-directory: android
           api-level: 30
           target: 'playstore'
           script: |
+            adb root
             npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.

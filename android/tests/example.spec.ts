@@ -11,7 +11,7 @@ test.describe('Run native Android tests', async () => {
     console.log(`Model: ${device.model()}`);
     console.log(`Serial: ${device.serial()}`); 
     // Take screenshot of the whole device.
-    await device.screenshot({ path: 'device.png' });    
+    await device.screenshot({ path: 'device-test2.png' });    
     console.log("log 1...");
     // Launch an application with WebView.
     await device.shell('am force-stop org.chromium.webview_shell');
@@ -46,12 +46,17 @@ test.describe('Run native Android tests', async () => {
     console.log(`Model: ${device.model()}`);
     console.log(`Serial: ${device.serial()}`);
     // Take screenshot of the whole device.
-    await device.screenshot({ path: 'device.png' });
+    await device.screenshot({ path: 'device-test1.png' });
     console.log("log 10...");
     // Launch Chrome browser.
     await device.shell('am force-stop com.android.chrome');
     console.log("log 11...");
-    const context = await device.launchBrowser();
+    const context = await device.launchBrowser({
+      bypassCSP: true,
+      recordVideo: {
+        dir: "playwright-report"
+      }
+    });
 
     // Use BrowserContext as usual.
     console.log("log 12...");
