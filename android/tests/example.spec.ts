@@ -1,11 +1,11 @@
 /**
  * Example automation on Android with WebView and Chrome browser.
- * @see https://playwright.dev/docs/api/class-android#android-devices
+ * @see https://playwright.dev/docs/api/class-android
  */
 import { _android as android, test } from '@playwright/test';
 
-test('Run android tests', async () => {
-  
+test.describe('Run native Android tests', async () => {
+
   // Connect to the device.
   const [device] = await android.devices();
   console.log(`Model: ${device.model()}`);
@@ -13,9 +13,7 @@ test('Run android tests', async () => {
   // Take screenshot of the whole device.
   await device.screenshot({ path: 'device.png' });
 
-  {
-    // --------------------- WebView -----------------------
-
+  test('WebView', async () => {
     // Launch an application with WebView.
     await device.shell('am force-stop org.chromium.webview_shell');
     await device.shell('am start org.chromium.webview_shell/.WebViewBrowserActivity');
@@ -30,11 +28,9 @@ test('Run android tests', async () => {
     const page = await webview.page();
     await page.waitForNavigation({ url: /.*microsoft\/playwright.*/ });
     console.log(await page.title());
-  }
-
-  {
-    // --------------------- Browser -----------------------
-
+  });
+  
+  test('Chrome Browser', async () => {
     // Launch Chrome browser.
     await device.shell('am force-stop com.android.chrome');
     const context = await device.launchBrowser();
@@ -46,8 +42,10 @@ test('Run android tests', async () => {
     await page.screenshot({ path: 'page.png' });
 
     await context.close();
-  }
+  });
 
-  // Close the device.
-  await device.close();
+  test.afterAll(async () => {
+    // Close the device.
+    await device.close();
+  });
 });
