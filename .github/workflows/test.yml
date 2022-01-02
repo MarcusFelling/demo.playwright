@@ -29,9 +29,8 @@ jobs:
         with:
           working-directory: android
           api-level: 30
-          target: 'google_apis'
+          target: 'playstore'
           script: |
-            adb root
             npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.

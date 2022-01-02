@@ -12,29 +12,19 @@ test.describe('Run native Android tests', async () => {
     console.log(`Serial: ${device.serial()}`); 
     // Take screenshot of the whole device.
     await device.screenshot({ path: 'device-test2.png' });    
-    console.log("log 1...");
     // Launch an application with WebView.
     await device.shell('am force-stop org.chromium.webview_shell');
-    console.log("log 2...");
     await device.shell('am start org.chromium.webview_shell/.WebViewBrowserActivity');
     // Get the WebView.
-    console.log("log 3...");
     const webview = await device.webView({ pkg: 'org.chromium.webview_shell' });
 
     // Fill the input box.
-    console.log("log 4...");
     await device.fill({ res: 'org.chromium.webview_shell:id/url_field' }, 'github.com/microsoft/playwright');
-    console.log("log 5...");
     await device.press({ res: 'org.chromium.webview_shell:id/url_field' }, 'Enter');
 
     // Work with WebView's page as usual.
-    console.log("log 6...");
     const page = await webview.page();
-    console.log("log 7...");
-    //await page.waitForNavigation({ url: /.*microsoft\/playwright.*/ });
-    console.log("log 8...");
     console.log(await page.title());
-    console.log("log 9...");
 
     // Close the device.
     await device.close();    
