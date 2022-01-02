@@ -31,7 +31,7 @@ test.describe('Run native Android tests', async () => {
     console.log("log 6...");
     const page = await webview.page();
     console.log("log 7...");
-    await page.waitForNavigation({ url: /.*microsoft\/playwright.*/ });
+    //await page.waitForNavigation({ url: /.*microsoft\/playwright.*/ });
     console.log("log 8...");
     console.log(await page.title());
     console.log("log 9...");
