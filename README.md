@@ -21,6 +21,8 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[accessibility](./accessibility/tests/example.spec.ts)** - runs accessibility checks against [https://www.w3.org](https://www.w3.org)
 
+**[android](./android/tests/example.spec.ts)** - runs a basic test using Android's WebView.
+
 ## Publish each HTML report to their respective directory
 
 When the above tests are finished, the results are published to GitHub pages:
@@ -32,6 +34,7 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/visual-comparison](https://testresults.marcusfelling.com/visual-comparison)
 * [testresults.marcusfelling.com/performance](https://testresults.marcusfelling.com/performance)
 * [testresults.marcusfelling.com/accessibility](https://testresults.marcusfelling.com/accessibility)
+* [testresults.marcusfelling.com/android](https://testresults.marcusfelling.com/android)
 
 ## Have a testing scenario you'd like to see included?
 

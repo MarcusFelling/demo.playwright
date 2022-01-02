@@ -274,9 +274,46 @@ jobs:
           path: |
             ${{ env.TESTGROUP }}/playwright-report
 
+  androidTests:
+    name: "android tests"
+    timeout-minutes: 60
+    runs-on: macos-11
+    env:
+      TESTGROUP: android
+    environment:
+      name: android
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: run tests
+        uses: reactivecircus/android-emulator-runner@v2.22.0
+        with:
+          working-directory: android
+          api-level: 30
+          target: 'google_apis'
+          script: |
+            adb root
+            HOME=/root npx playwright test
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: |
+            ${{ env.TESTGROUP }}/playwright-report
+
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
-    needs: [svgomgTests, basicTests, todomvcTests, githubAPITests, visualComparisonTests, performanceTests, accessibilityTests]
+    needs: [svgomgTests, basicTests, todomvcTests, githubAPITests, visualComparisonTests, performanceTests, accessibilityTests, androidTests]
     runs-on: ubuntu-20.04
     if: always()
     steps:
