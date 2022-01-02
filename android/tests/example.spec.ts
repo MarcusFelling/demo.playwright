@@ -14,7 +14,7 @@ test.describe('Run native Android tests', async () => {
     await device.screenshot({ path: 'device-test2.png' });    
     console.log("log 1...");
     // Launch an application with WebView.
-    await device.shell('am kill org.chromium.webview_shell');
+    await device.shell('am force-stop org.chromium.webview_shell');
     console.log("log 2...");
     await device.shell('am start org.chromium.webview_shell/.WebViewBrowserActivity');
     // Get the WebView.
@@ -49,7 +49,7 @@ test.describe('Run native Android tests', async () => {
     await device.screenshot({ path: 'device-test1.png' });
     console.log("log 10...");
     // Launch Chrome browser.
-    await device.shell('am kill com.android.chrome');
+    await device.shell('am force-stop com.android.chrome');
     console.log("log 11...");
     const context = await device.launchBrowser();
 
