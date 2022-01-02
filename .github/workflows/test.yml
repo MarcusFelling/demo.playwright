@@ -317,7 +317,7 @@ jobs:
 
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
-    needs: [svgomgTests, basicTests, todomvcTests, githubAPITests, visualComparisonTests, performanceTests, accessibilityTests]
+    needs: [svgomgTests, basicTests, todomvcTests, githubAPITests, visualComparisonTests, performanceTests, accessibilityTests, androidTests]
     runs-on: ubuntu-20.04
     if: always()
     steps:
