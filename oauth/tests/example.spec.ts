@@ -9,7 +9,7 @@ test.describe('Oauth tests', () => {
     await page.locator('a.button.facebook').click();
     await page.locator('[placeholder="Email or phone number"]').fill(process.env.OUTLOOK_USER);
     await page.locator('[placeholder="Email or phone number"]').press('Tab');
-    await page.locator('[placeholder="Password"]').fill('process.env.PWD');
+    await page.locator('[placeholder="Password"]').fill(process.env.PWD);
     await page.locator('button:has-text("Log In")').click();
   });
 
