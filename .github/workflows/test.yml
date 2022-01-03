@@ -311,9 +311,48 @@ jobs:
           path: |
             ${{ env.TESTGROUP }}/playwright-report
 
+  electronTests:
+    name: "electron tests"
+    timeout-minutes: 60
+    runs-on: macos-11
+    env:
+      TESTGROUP: electron
+    environment:
+      name: electron
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install electron
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          npm install -g electron --unsafe-perm=true --allow-root
+
+      - name: Install dependencies
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          npm install
+
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          npx playwright test
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: |
+            ${{ env.TESTGROUP }}/playwright-report
+
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
-    needs: [svgomgTests, basicTests, todomvcTests, githubAPITests, visualComparisonTests, performanceTests, accessibilityTests, androidTests]
+    needs: [svgomgTests, basicTests, todomvcTests, githubAPITests, visualComparisonTests, performanceTests, accessibilityTests, androidTests, electronTests]
     runs-on: ubuntu-20.04
     if: always()
     steps:

@@ -23,6 +23,8 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[android](./android/tests/example.spec.ts)** - runs a basic test using Android's WebView.
 
+**[electron](./electron/tests/example.spec.ts)** - runs a basic test for Electron application, controlling main electron process and working with Electron window.
+
 ## Publish each HTML report to their respective directory
 
 When the above tests are finished, the results are published to GitHub pages:
@@ -35,6 +37,7 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/performance](https://testresults.marcusfelling.com/performance)
 * [testresults.marcusfelling.com/accessibility](https://testresults.marcusfelling.com/accessibility)
 * [testresults.marcusfelling.com/android](https://testresults.marcusfelling.com/android)
+* [testresults.marcusfelling.com/electron](https://testresults.marcusfelling.com/electron)
 
 ## Have a testing scenario you'd like to see included?
 
