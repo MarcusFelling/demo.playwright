@@ -6,7 +6,7 @@ import { _electron as electron, test } from '@playwright/test';
 
 test('Run electron tests', async () => {
   // Launch Electron app.
-  const electronApp = await electron. launch({ args: ['dist/index.js'] });
+  const electronApp = await electron.launch({ args: ['dist/index.js'] });
 
   // Evaluation expression in the Electron context.
   const appPath = await electronApp.evaluate(async ({ app }) => {
@@ -20,8 +20,6 @@ test('Run electron tests', async () => {
   const window = await electronApp.firstWindow();
   // Print the title.
   console.log(await window.title());
-  // Capture a screenshot.
-  await window.screenshot({ path: 'intro.png' });
   // Direct Electron console to Node terminal.
   window.on('console', console.log);
   // Exit app.
