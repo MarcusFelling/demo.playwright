@@ -327,10 +327,14 @@ jobs:
         with:
           node-version: "14.x"
 
-      - name: Install dependencies
+      - name: Install electron globally
         working-directory: ${{ env.TESTGROUP }}
         run: |
           npm install -g electron -unsafe-perm=true -allow-root
+
+      - name: Install dependencies
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
           npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
