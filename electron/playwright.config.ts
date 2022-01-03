@@ -33,7 +33,8 @@ const config: PlaywrightTestConfig = {
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-
+    headless: true,
+    
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
 
@@ -47,11 +48,5 @@ const config: PlaywrightTestConfig = {
   // Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: 'test-results/',
 
-  /* Run your local dev server before starting the tests */
-  webServer: {
-     command: 'npm start',
-     port: 3000,
-     timeout: 90 * 1000,
- },
 };
 export default config;
