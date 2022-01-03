@@ -318,7 +318,6 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: electron
-      SITE_URL: https://www.w3.org/WAI/ # Playwright tests use this for baseURL
     environment:
       name: electron
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
