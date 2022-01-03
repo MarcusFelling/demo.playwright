@@ -315,7 +315,6 @@ jobs:
     name: "electron tests"
     timeout-minutes: 60
     runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: electron
     environment:
