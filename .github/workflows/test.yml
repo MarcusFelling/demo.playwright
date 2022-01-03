@@ -330,8 +330,7 @@ jobs:
       - name: Install dependencies
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          apt update && apt install sudo
-          sudo npm install -g electron --unsafe-perm=true --allow-root
+          mkdir electron/node_modules/electron/electron-download-9Z80gY
           npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
