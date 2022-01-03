@@ -328,6 +328,7 @@ jobs:
           node-version: "14.x"
 
       - name: Install dependencies
+        working-directory: ${{ env.TESTGROUP }}
         run: |
           npm ci
 
