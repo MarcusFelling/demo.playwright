@@ -6,7 +6,7 @@ import { _electron as electron, test } from '@playwright/test';
 
 test('Run electron tests', async () => {
   // Launch Electron app.
-  const electronApp = await electron.launch({ args: ['dist/index.js'] });
+  const electronApp = await electron. launch({ args: ['dist/index.js'] });
 
   // Evaluation expression in the Electron context.
   const appPath = await electronApp.evaluate(async ({ app }) => {
