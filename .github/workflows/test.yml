@@ -330,8 +330,8 @@ jobs:
       - name: Install dependencies
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          mkdir -p node_modules/electron/electron-download-9Z80gY
-          npm ci
+          mkdir -p node_modules/electron/
+          npm install
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
