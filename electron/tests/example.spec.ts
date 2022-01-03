@@ -20,6 +20,8 @@ test('Run electron tests', async () => {
   const window = await electronApp.firstWindow();
   // Print the title.
   console.log(await window.title());
+  // Capture a screenshot.
+  await window.screenshot({ path: 'intro.png' });
   // Direct Electron console to Node terminal.
   window.on('console', console.log);
   // Exit app.
