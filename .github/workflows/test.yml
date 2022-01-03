@@ -314,7 +314,7 @@ jobs:
   electronTests:
     name: "electron tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: macos-11
     env:
       TESTGROUP: electron
     environment:
@@ -341,7 +341,7 @@ jobs:
         working-directory: ${{ env.TESTGROUP }}
         run: |
           npx playwright test
-          
+
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
