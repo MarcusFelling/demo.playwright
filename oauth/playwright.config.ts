@@ -8,7 +8,7 @@ const config: PlaywrightTestConfig = {
   testDir: './tests',
 
   /* Maximum time one test can run for. */
-  timeout: 50 * 1000,
+  timeout: 80 * 1000,
 
   expect: {
 
@@ -33,7 +33,7 @@ const config: PlaywrightTestConfig = {
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless: true,
+    headless: false,
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
 
@@ -49,6 +49,12 @@ const config: PlaywrightTestConfig = {
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+      },
+    },
+    {
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
@@ -57,7 +63,7 @@ const config: PlaywrightTestConfig = {
     {
       name: 'webkit',
       use: {
-        ...devices['Desktop Safari'],
+        ...devices['Desktop Safari'],        
       },
     },
   ],
