@@ -18,7 +18,7 @@ test.describe('Oauth tests', () => {
     await page.locator('[aria-label="Email or phone"]').fill(process.env.GMAIL_USER);
     await page.locator('button:has-text("Next")').click()
     await page.locator('[aria-label="Enter your password"]').fill(process.env.PWD);
-    await page.locator('button:has-text("Next") >> nth=0').click()   
+    await page.locator('button:has-text("Next") >> nth=0').click()
   });
 
   test('Should be able to login with LinkedIn', async ({ page }) => {
@@ -26,19 +26,19 @@ test.describe('Oauth tests', () => {
     await page.locator('[aria-label="Email or Phone"]').fill(process.env.OUTLOOK_USER);
     await page.locator('[aria-label="Email or Phone"]').press('Tab');
     await page.locator('input[name="session_password"]').fill(process.env.PWD);
-    await page.locator('[aria-label="Sign in"]').click();  
-  }); 
+    await page.locator('[aria-label="Sign in"]').click();
+  });
 });
 
 test.afterEach(async ({ page }) => {
-    // URL should be changed to collections page after login
-    await expect(page).toHaveURL(/.*collections/);
-    // Check menu items after login nav header__nav hidden-print user-signed-in
-    const menuItems = page.locator('ul.dropdown__menu li.dropdown__menu-item');
-    await expect(menuItems).toHaveText([
-      'My Account',
-      'My Dashboard',
-      'Support',
-      'Sign Out',
-    ]);  
+  // URL should be changed to collections page after login
+  await expect(page).toHaveURL(/.*collections/);
+  // Check menu items after login nav header__nav hidden-print user-signed-in
+  const menuItems = page.locator('ul.dropdown__menu li.dropdown__menu-item');
+  await expect(menuItems).toHaveText([
+    'My Account',
+    'My Dashboard',
+    'Support',
+    'Sign Out',
+  ]);
 });
