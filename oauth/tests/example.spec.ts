@@ -24,7 +24,7 @@ test.describe('Oauth tests', () => {
 
 test.afterEach(async ({ page }) => {
   // URL should be changed to collections page after login
-  await expect(page).toHaveURL(/.*collections/, { timeout: 10000 });
+  await expect(page).toHaveURL(/.*collections/);
   // Check menu items after login nav header__nav hidden-print user-signed-in
   const menuItems = page.locator('ul.dropdown__menu li.dropdown__menu-item');
   await expect(menuItems).toHaveText([
@@ -32,5 +32,5 @@ test.afterEach(async ({ page }) => {
     'My Dashboard',
     'Support',
     'Sign Out',
-  ], { timeout: 10000 });
+  ]);
 });
