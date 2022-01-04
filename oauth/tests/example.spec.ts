@@ -5,7 +5,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe('Oauth tests', () => {
-  test('Should be able to login with Facebook', async ({ page }) => {
+  test.('Should be able to login with Facebook', async ({ page }) => {
     await page.locator('a.button.facebook').click();
     await page.locator('[placeholder="Email or phone number"]').fill(process.env.OUTLOOK_USER);
     await page.locator('[placeholder="Email or phone number"]').press('Tab');

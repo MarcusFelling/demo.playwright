@@ -52,18 +52,21 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
+        userAgent: 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',
       },
     },
     {
       name: 'firefox',
       use: {
         ...devices['Desktop Firefox'],
+        userAgent: 'Mozilla/5.0 (X11; Linux i686; rv:95.0) Gecko/20100101 Firefox/95.0',
       },
     },
     {
       name: 'webkit',
       use: {
         ...devices['Desktop Safari'],
+        userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 12_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.2 Safari/605.1.15',
       },
     },
   ],
