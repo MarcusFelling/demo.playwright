@@ -351,7 +351,7 @@ jobs:
   oauthTests:
     name: "oauth tests"
     timeout-minutes: 60
-    runs-on: self-hosted
+    runs-on: macos-11
     env:
       TESTGROUP: oauth
       SITE_URL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
