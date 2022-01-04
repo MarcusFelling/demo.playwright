@@ -298,7 +298,7 @@ jobs:
         with:
           working-directory: android
           api-level: 30
-          target: 'google_apis'
+          target: "google_apis"
           script: |
             adb root
             HOME=/root npx playwright test
@@ -394,7 +394,19 @@ jobs:
 
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
-    needs: [svgomgTests, basicTests, todomvcTests, githubAPITests, visualComparisonTests, performanceTests, accessibilityTests, androidTests, electronTests, oauthTests]
+    needs:
+      [
+        svgomgTests,
+        basicTests,
+        todomvcTests,
+        githubAPITests,
+        visualComparisonTests,
+        performanceTests,
+        accessibilityTests,
+        androidTests,
+        electronTests,
+        oauthTests,
+      ]
     runs-on: ubuntu-20.04
     if: always()
     steps:
