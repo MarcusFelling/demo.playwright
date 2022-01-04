@@ -372,6 +372,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
+          npx playwright install  
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
