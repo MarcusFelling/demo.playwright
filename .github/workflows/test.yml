@@ -378,7 +378,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          HOME=/root npx playwright test
+          HOME=/root npx playwright test --headed
 
           # inject link into HTML report
           LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
