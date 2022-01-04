@@ -360,7 +360,7 @@ jobs:
       SITE_URL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
       GMAIL_USER: ${{ secrets.GMAIL_USER }}
       OUTLOOK_USER: ${{ secrets.OUTLOOK_USER }}
-      PWD: ${{ secrets.PWD }} 
+      PW_PWD: ${{ secrets.PW_PWD }} 
     environment:
       name: oauth
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
