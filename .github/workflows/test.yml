@@ -1,7 +1,5 @@
 name: Demo.Playwright
 on:
-  push:
-    branches: [main]
   pull_request:
     branches: [main]
 jobs:
@@ -378,7 +376,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          npx playwright test
+          npx playwright test --headed
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
