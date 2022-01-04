@@ -353,8 +353,7 @@ jobs:
   oauthTests:
     name: "oauth tests"
     timeout-minutes: 60
-    runs-on: macos-11
-    container: mcr.microsoft.com/playwright:focal
+    runs-on: ubuntu-20.04
     env:
       TESTGROUP: oauth
       SITE_URL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
