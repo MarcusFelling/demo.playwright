@@ -25,7 +25,9 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[electron](./electron/tests/example.spec.ts)** - runs a basic test for Electron application, controlling main electron process and working with Electron window.
 
-**[oauth](./oauth/tests/example.spec.ts)** - runs oauth tests for LinkedIn, Facebook, and Google, to login to https://courses.ultimateqa.com/users/sign_in.
+**[oauth](./oauth/tests/example.spec.ts)** - runs oauth tests for LinkedIn, Facebook, and Google, to login to <https://courses.ultimateqa.com/users/sign_in>.
+
+**[fixtures](./fixtures/tests)** - runs example tests utilizing [test and worker fixtures](https://playwright.dev/docs/test-fixtures).
 
 ## Publish each HTML report to their respective directory
 
@@ -41,6 +43,7 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/android](https://testresults.marcusfelling.com/android)
 * [testresults.marcusfelling.com/electron](https://testresults.marcusfelling.com/electron)
 * [testresults.marcusfelling.com/oauth](https://testresults.marcusfelling.com/oauth)
+* [testresults.marcusfelling.com/fixtures](https://testresults.marcusfelling.com/fixtures)
 
 ## Have a testing scenario you'd like to see included?
 
