@@ -44,4 +44,4 @@ When the above tests are finished, the results are published to GitHub pages:
 
 ## Have a testing scenario you'd like to see included?
 
-Please [open an issue](../../issues/new) with details.
+Please [open an issue](../../issues/new?assignees=MarcusFelling&labels=testing-scenario-idea&template=testing-scenario-idea-template.md&title=%5BIdea+for+testing+scenario%5D) with details.
