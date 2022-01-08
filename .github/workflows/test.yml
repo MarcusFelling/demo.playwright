@@ -367,16 +367,35 @@ jobs:
         with:
           node-version: "14.x"
 
+  fixturesTests:
+    name: "fixtures tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP: fixtures
+    environment:
+      name: fixtures
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
       - name: Install dependencies
         run: |
           npm ci
-          npx playwright install  
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          npx playwright test --headed
+          HOME=/root npx playwright test test-fixture.spec.ts
+
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html          
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
@@ -400,6 +419,7 @@ jobs:
         androidTests,
         electronTests,
         oauthTests,
+        fixturesTests,
       ]
     runs-on: ubuntu-20.04
     if: always()
