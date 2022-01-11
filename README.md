@@ -29,7 +29,7 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[fixtures](./fixtures/tests)** - runs example tests utilizing [test and worker fixtures](https://playwright.dev/docs/test-fixtures).
 
-**[drag-and-drop](./drag-and-drop/tests)** - runs example drag-and-drop test utilizing [https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_draganddrop](https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_draganddrop).
+**[drag-and-drop](./drag-and-drop/tests/example.spec.ts)** - runs example drag-and-drop test utilizing [https://www.w3schools.com/html/html5_draganddrop.asp](https://www.w3schools.com/html/html5_draganddrop.asp).
 
 ## Publish each HTML report to their respective directory
 
