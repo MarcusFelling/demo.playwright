@@ -472,7 +472,9 @@ jobs:
         if: always()
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          external_repository: MarcusFelling/demo.reports
+          publish_branch: main
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
           publish_dir: ${{steps.download.outputs.download-path}}
           keep_files: true
           user_name: "github-actions[bot]"
