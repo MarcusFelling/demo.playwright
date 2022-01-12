@@ -367,6 +367,23 @@ jobs:
         with:
           node-version: "14.x"
 
+      - name: Install dependencies
+        run: |
+          npm ci
+          npx playwright install  
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          npx playwright test --headed
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: |
+            ${{ env.TESTGROUP }}/playwright-report
+
   fixturesTests:
     name: "fixtures tests"
     timeout-minutes: 60
