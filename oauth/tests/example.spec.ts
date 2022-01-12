@@ -19,15 +19,7 @@ test.describe('Oauth tests', () => {
     await page.locator('button:has-text("Next")').click()
     await page.locator('[aria-label="Enter your password"]').fill(process.env.PW_PWD);
     await page.locator('button:has-text("Next") >> nth=0').click()
-  });
-
-  test('Should be able to login with LinkedIn', async ({ page }) => {
-    await page.locator('a.button.linkedin').click();
-    await page.locator('[aria-label="Email or Phone"]').fill(process.env.OUTLOOK_USER);
-    await page.locator('[aria-label="Email or Phone"]').press('Tab');
-    await page.locator('input[name="session_password"]').fill(process.env.PW_PWD);
-    await page.locator('[aria-label="Sign in"]').click(); 
-  });   
+  });  
 });
 
 test.afterEach(async ({ page }) => {
