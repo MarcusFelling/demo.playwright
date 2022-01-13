@@ -120,7 +120,7 @@ jobs:
   chromeExtensionTests:
     name: "chrome-extension tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: macos-11
     env:
       TESTGROUP: chrome-extension
     environment:
@@ -140,11 +140,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          HOME=/root npx playwright test --headed
-
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+          npx playwright test --headed
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
