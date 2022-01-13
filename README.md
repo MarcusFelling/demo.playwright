@@ -12,6 +12,8 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[basic](./basic)** - basic tests to show interactions, element selectors, assertions, upload files, read a response, mock a response, and page object model (POM).
 
+**[chrome-extension](./chrome-extension/tests/example.spec.ts)** - basic test that gets a handle to the background page of Chrome extension.
+
 **[drag-and-drop](./drag-and-drop/tests/example.spec.ts)** - runs example drag-and-drop test utilizing [https://www.w3schools.com/html/html5_draganddrop.asp](https://www.w3schools.com/html/html5_draganddrop.asp).
 
 **[electron](./electron/tests/example.spec.ts)** - runs a basic test for Electron application, controlling main electron process and working with Electron window.
@@ -40,6 +42,7 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/accessibility](https://testresults.marcusfelling.com/accessibility)
 * [testresults.marcusfelling.com/android](https://testresults.marcusfelling.com/android)
 * [testresults.marcusfelling.com/basic](https://testresults.marcusfelling.com/basic)
+* [testresults.marcusfelling.com/chrome-extension](https://testresults.marcusfelling.com/chrome-extension)
 * [testresults.marcusfelling.com/drag-and-drop](https://testresults.marcusfelling.com/drag-and-drop)
 * [testresults.marcusfelling.com/electron](https://testresults.marcusfelling.com/electron)
 * [testresults.marcusfelling.com/fixtures](https://testresults.marcusfelling.com/fixtures)
