@@ -121,7 +121,6 @@ jobs:
     name: "chrome-extension tests"
     timeout-minutes: 60
     runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: chrome-extension
     environment:
@@ -136,7 +135,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-
+          npx playwright install
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
