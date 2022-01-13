@@ -469,7 +469,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: websockets
-      SITE_URL: https://playwright.dev # Playwright tests use this for baseURL
+      SITE_URL: https://www.reddit.com/ # Playwright tests use this for baseURL
       REDDIT_USER: ${{ secrets.REDDIT_USER }}
       PW_PWD: ${{ secrets.PW_PWD }}      
     environment:
