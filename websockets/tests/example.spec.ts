@@ -30,7 +30,8 @@ test.describe('WebSockets', async () => {
     await page.waitForNavigation();
     await expect(page).toHaveTitle('Reddit - Dive into anything');
   });
-
+  
+  // wss://gql-realtime.reddit.com/query logs events with categories like USER_IS_ONLINE, VOTE_COUNT_UPDATE, COMMENT_COUNT_UPDATE
   test('Should be able to inspect websocket event', async ({ page }) => {
     page.on('websocket', ws => {
       console.log(`WebSocket opened: ${ws.url()}>`);
