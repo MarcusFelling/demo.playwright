@@ -4,236 +4,6 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  basicTests:
-    name: "basic tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:focal
-    env:
-      TESTGROUP: basic
-    environment:
-      name: basic
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14.x"
-
-      - name: Install dependencies
-        run: |
-          npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          HOME=/root npx playwright test
-
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
-
-  todomvcTests:
-    name: "todomvc tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:focal
-    env:
-      TESTGROUP: todomvc
-      SITE_URL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
-    environment:
-      name: todomvc
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14.x"
-
-      - name: Install dependencies
-        run: |
-          npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          HOME=/root npx playwright test
-
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
-
-  svgomgTests:
-    name: "svgomg tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:focal
-    env:
-      TESTGROUP: svgomg
-      SITE_URL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL
-    environment:
-      name: svgomg
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14.x"
-
-      - name: Install dependencies
-        run: |
-          npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          HOME=/root npx playwright test
-
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
-
-  githubAPITests:
-    name: "github-api tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:focal
-    env:
-      TESTGROUP: github-api
-      GITHUB_USER: ${{ secrets.REPO_USER }}
-      API_TOKEN: ${{ secrets.API_TOKEN }}
-      SITE_URL: https://api.github.com # Playwright tests use this for baseURL
-    environment:
-      name: github-api
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14.x"
-
-      - name: Install dependencies
-        run: |
-          npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          HOME=/root npx playwright test
-
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
-
-  visualComparisonTests:
-    name: "visual-comparison tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:focal
-    env:
-      TESTGROUP: visual-comparison
-      SITE_URL: https://playwright.dev # Playwright tests use this for baseURL
-    environment:
-      name: visual-comparison
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14.x"
-
-      - name: Install dependencies
-        run: |
-          npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          HOME=/root npx playwright test
-
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
-
-  performanceTests:
-    name: "performance tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:focal
-    env:
-      TESTGROUP: performance
-      SITE_URL: https://fastestwebsite.net/ # Playwright tests use this for baseURL
-    environment:
-      name: performance
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14.x"
-
-      - name: Install dependencies
-        run: |
-          npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          HOME=/root npx playwright test
-
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: |
-            ${{ env.TESTGROUP }}/playwright-report
-
   accessibilityTests:
     name: "accessibility tests"
     timeout-minutes: 60
@@ -310,58 +80,15 @@ jobs:
           path: |
             ${{ env.TESTGROUP }}/playwright-report
 
-  electronTests:
-    name: "electron tests"
-    timeout-minutes: 60
-    runs-on: macos-11
-    env:
-      TESTGROUP: electron
-    environment:
-      name: electron
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14.x"
-
-      - name: Install electron
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npm install -g electron --unsafe-perm=true --allow-root
-
-      - name: Install dependencies
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npm install
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright test
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: |
-            ${{ env.TESTGROUP }}/playwright-report
-
-  oauthTests:
-    name: "oauth tests"
+  basicTests:
+    name: "basic tests"
     timeout-minutes: 60
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
     env:
-      TESTGROUP: oauth
-      SITE_URL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
-      GMAIL_USER: ${{ secrets.GMAIL_USER }}
-      OUTLOOK_USER: ${{ secrets.OUTLOOK_USER }}
-      PW_PWD: ${{ secrets.PW_PWD }}
+      TESTGROUP: basic
     environment:
-      name: oauth
+      name: basic
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
@@ -388,18 +115,17 @@ jobs:
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: |
-            ${{ env.TESTGROUP }}/playwright-report
+          path: ${{ env.TESTGROUP }}/playwright-report
 
-  fixturesTests:
-    name: "fixtures tests"
+  chromeExtensionTests:
+    name: "chrome-extension tests"
     timeout-minutes: 60
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
     env:
-      TESTGROUP: fixtures
+      TESTGROUP: chrome-extension
     environment:
-      name: fixtures
+      name: chrome-extension
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
       - uses: actions/checkout@master
@@ -415,7 +141,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          HOME=/root npx playwright test test-fixture.spec.ts
+          HOME=/root npx playwright test --headed
 
           # inject link into HTML report
           LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
@@ -468,6 +194,318 @@ jobs:
           path: |
             ${{ env.TESTGROUP }}/playwright-report
 
+  electronTests:
+    name: "electron tests"
+    timeout-minutes: 60
+    runs-on: macos-11
+    env:
+      TESTGROUP: electron
+    environment:
+      name: electron
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install electron
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          npm install -g electron --unsafe-perm=true --allow-root
+
+      - name: Install dependencies
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          npm install
+
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          npx playwright test
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: |
+            ${{ env.TESTGROUP }}/playwright-report
+
+  fixturesTests:
+    name: "fixtures tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP: fixtures
+    environment:
+      name: fixtures
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          HOME=/root npx playwright test test-fixture.spec.ts
+
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: |
+            ${{ env.TESTGROUP }}/playwright-report
+
+  githubAPITests:
+    name: "github-api tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP: github-api
+      GITHUB_USER: ${{ secrets.REPO_USER }}
+      API_TOKEN: ${{ secrets.API_TOKEN }}
+      SITE_URL: https://api.github.com # Playwright tests use this for baseURL
+    environment:
+      name: github-api
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          HOME=/root npx playwright test
+
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: ${{ env.TESTGROUP }}/playwright-report
+
+  oauthTests:
+    name: "oauth tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP: oauth
+      SITE_URL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
+      GMAIL_USER: ${{ secrets.GMAIL_USER }}
+      OUTLOOK_USER: ${{ secrets.OUTLOOK_USER }}
+      PW_PWD: ${{ secrets.PW_PWD }}
+    environment:
+      name: oauth
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          HOME=/root npx playwright test
+
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: |
+            ${{ env.TESTGROUP }}/playwright-report
+
+  performanceTests:
+    name: "performance tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP: performance
+      SITE_URL: https://fastestwebsite.net/ # Playwright tests use this for baseURL
+    environment:
+      name: performance
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          HOME=/root npx playwright test
+
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: |
+            ${{ env.TESTGROUP }}/playwright-report
+
+  svgomgTests:
+    name: "svgomg tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP: svgomg
+      SITE_URL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL
+    environment:
+      name: svgomg
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          HOME=/root npx playwright test
+
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: ${{ env.TESTGROUP }}/playwright-report
+
+  todomvcTests:
+    name: "todomvc tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP: todomvc
+      SITE_URL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
+    environment:
+      name: todomvc
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          HOME=/root npx playwright test
+
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: ${{ env.TESTGROUP }}/playwright-report
+
+  visualComparisonTests:
+    name: "visual-comparison tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-20.04
+    container: mcr.microsoft.com/playwright:focal
+    env:
+      TESTGROUP: visual-comparison
+      SITE_URL: https://playwright.dev # Playwright tests use this for baseURL
+    environment:
+      name: visual-comparison
+      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14.x"
+
+      - name: Install dependencies
+        run: |
+          npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          HOME=/root npx playwright test
+
+          # inject link into HTML report
+          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: ${{ env.TESTGROUP }}
+          path: ${{ env.TESTGROUP }}/playwright-report
+
   webSocketsTests:
     name: "websockets tests"
     timeout-minutes: 60
@@ -509,62 +547,24 @@ jobs:
           path: |
             ${{ env.TESTGROUP }}/playwright-report
 
-  chromeExtensionTests:
-    name: "chrome-extension tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-20.04
-    container: mcr.microsoft.com/playwright:focal
-    env:
-      TESTGROUP: chrome-extension
-    environment:
-      name: chrome-extension
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "14.x"
-
-      - name: Install dependencies
-        run: |
-          npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          HOME=/root npx playwright test --headed
-
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v2
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: |
-            ${{ env.TESTGROUP }}/playwright-report
-
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
     needs:
       [
-        svgomgTests,
-        basicTests,
-        todomvcTests,
-        githubAPITests,
-        visualComparisonTests,
-        performanceTests,
         accessibilityTests,
         androidTests,
-        electronTests,
-        oauthTests,
-        fixturesTests,
-        dragAndDropTests,
-        webSocketsTests,
+        basicTests,
         chromeExtensionTests,
+        dragAndDropTests,
+        electronTests,
+        fixturesTests,
+        githubAPITests,
+        oauthTests,
+        performanceTests,
+        svgomgTests,
+        todomvcTests,
+        visualComparisonTests,
+        webSocketsTests,
       ]
     runs-on: ubuntu-20.04
     if: always()
