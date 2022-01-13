@@ -31,6 +31,8 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[drag-and-drop](./drag-and-drop/tests/example.spec.ts)** - runs example drag-and-drop test utilizing [https://www.w3schools.com/html/html5_draganddrop.asp](https://www.w3schools.com/html/html5_draganddrop.asp).
 
+**[websockets](./websockets/tests/example.spec.ts)** - runs example test that logs in to Reddit.com, then inspects WebSockets using page.on('websocket').
+
 ## Publish each HTML report to their respective directory
 
 When the above tests are finished, the results are published to GitHub pages:
@@ -47,6 +49,7 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/oauth](https://testresults.marcusfelling.com/oauth)
 * [testresults.marcusfelling.com/fixtures](https://testresults.marcusfelling.com/fixtures)
 * [testresults.marcusfelling.com/drag-and-drop](https://testresults.marcusfelling.com/drag-and-drop)
+* [testresults.marcusfelling.com/websockets](https://testresults.marcusfelling.com/websockets)
 
 ## Have a testing scenario you'd like to see included?
 
