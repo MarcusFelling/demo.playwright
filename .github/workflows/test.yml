@@ -141,7 +141,7 @@ jobs:
         working-directory: ${{ env.TESTGROUP }}
         run: |
           # Extensions only work in Chrome / Chromium in non-headless mode.
-          npx playwright test --headed
+          npx playwright test --headed --project=chromium
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
