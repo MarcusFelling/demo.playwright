@@ -376,7 +376,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          npx playwright test --headed
+          npx playwright test
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
