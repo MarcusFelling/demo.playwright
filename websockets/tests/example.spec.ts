@@ -12,17 +12,20 @@ test.describe('WebSockets', async () => {
     ],
   })
 
-  // login to Reddit
+  // log in to Reddit
   test.beforeEach(async ({ page }) => {
     await page.goto('');
     await page.locator('text=Log In').click();
 
-    // Use frameLocator to find the frame with the login form and fill it https://playwright.dev/docs/frames#frames
-    const username = page.frameLocator('._25r3t_lrPF3M6zD2YkWvZU').locator('#loginUsername');
+    /** Use frame.locator to find the login form and fill it in
+    * @see https://playwright.dev/docs/frames
+    */
+    const frame = page.frame({ url: /.*login.*/ });
+    const username = frame.locator('#loginUsername');
     await username.fill(process.env.REDDIT_USER);
-    const password = page.frameLocator('._25r3t_lrPF3M6zD2YkWvZU').locator('#loginPassword');
+    const password = frame.locator('#loginPassword');
     await password.fill(process.env.PW_PWD);
-    const login = page.frameLocator('._25r3t_lrPF3M6zD2YkWvZU').locator('text=Log In');
+    const login = frame.locator('text=Log In');
     await login.click();
     await page.waitForNavigation();
     await expect(page).toHaveTitle('Reddit - Dive into anything');
