@@ -6,7 +6,6 @@
  * 2. Run tests that programmatically create new issues.
  * 3. Delete the repo.
  */
-
 import { test, expect } from '@playwright/test';
 
 const user = process.env.GITHUB_USER;

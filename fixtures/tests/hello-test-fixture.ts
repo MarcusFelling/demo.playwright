@@ -2,7 +2,6 @@
  * In this file we define our test fixtures.
  * @see https://playwright.dev/docs/test-fixtures#test-fixtures
  */
-
 import { test as base } from '@playwright/test';
 
 // Define test fixtures "hello" and "helloWorld".

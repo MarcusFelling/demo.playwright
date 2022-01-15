@@ -2,7 +2,6 @@
  * In this test we use worker fixtures to test the express server.
  * @see https://playwright.dev/docs/test-fixtures#worker-fixtures
  */
-
 import test from './express-test';
 import fetch from 'node-fetch';
 

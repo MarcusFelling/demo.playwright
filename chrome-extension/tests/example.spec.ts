@@ -1,8 +1,8 @@
 /**
-   * In this test we get a handle to the background page
-   * of an extension whose source is located in ./my-extension
-   * @see https://playwright.dev/docs/chrome-extensions
-  */ 
+ * In this test we get a handle to the background page
+ * of an extension whose source is located in ./my-extension
+ * @see https://playwright.dev/docs/chrome-extensions
+ */ 
 import { test, chromium } from '@playwright/test';
 
 test.describe('chrome extension tests', () => { 

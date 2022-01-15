@@ -2,7 +2,6 @@
  * In this test we define our worker fixtures.
  * @see https://playwright.dev/docs/test-fixtures#worker-fixtures
  */
-
 import { test as base } from '@playwright/test';
 import express from 'express';
 import type { Express } from 'express';
