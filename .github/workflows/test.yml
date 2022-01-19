@@ -29,6 +29,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
+          npx playwright install
           HOME=/root npx playwright test
 
           # inject link into HTML report
@@ -104,6 +105,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
+          npx playwright install        
           HOME=/root npx playwright test
 
           # inject link into HTML report
@@ -176,6 +178,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
+          npx playwright install        
           HOME=/root npx playwright test
 
           # inject link into HTML report
@@ -335,6 +338,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
+          npx playwright install        
           HOME=/root npx playwright test
 
           # inject link into HTML report
@@ -374,6 +378,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
+          npx playwright install        
           HOME=/root npx playwright test
 
           # inject link into HTML report
@@ -413,6 +418,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
+          npx playwright install        
           HOME=/root npx playwright test
 
           # inject link into HTML report
@@ -451,6 +457,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
+          npx playwright install        
           HOME=/root npx playwright test
 
           # inject link into HTML report
@@ -489,6 +496,7 @@ jobs:
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
         run: |
+          npx playwright install        
           HOME=/root npx playwright test
 
           # inject link into HTML report
