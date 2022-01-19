@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const $ = document.querySelector.bind(document);
+    const messagesEl = $('#messages');
+    const input = $('#input');
+
+    const socket = io();
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!input.value)
+        continue;
+      socket.emit('message', input.value);
+      input.value = '';
+    }, false);
+
+    socket.on('message', function(msg) {
+      const item = document.createElement('div');
+      item.classList.add('message');
+      item.textContent = msg;
+      messagesEl.appendChild(item);
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  }, false);
+
+</script>
+

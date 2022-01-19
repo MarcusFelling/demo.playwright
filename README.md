@@ -33,7 +33,7 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[visual-comparison](./visual-comparison/tests/example.spec.ts)** - visually compares snapshots with golden screenshots and text content for playwright.dev landing page.
 
-**[websockets](./websockets/tests/example.spec.ts)** - runs example test that logs in to Reddit.com, then inspects WebSockets using page.on('websocket').
+**[websockets](./websockets/tests/example.spec.ts)** - runs example test that launches an example app through [webServer](https://playwright.dev/docs/api/class-testconfig#test-config-web-server) in global config, then inspects websocket event payload.
 
 ## Publish each HTML report to their respective directory
 
