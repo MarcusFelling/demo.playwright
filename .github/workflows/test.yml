@@ -11,7 +11,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: accessibility
-      SITE_URL: https://www.w3.org/WAI/ # Playwright tests use this for baseURL
+      BASEURL: https://www.w3.org/WAI/ # Playwright tests use this for baseURL
     environment:
       name: accessibility
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -160,7 +160,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: drag-and-drop
-      SITE_URL: https://www.w3schools.com/html/html5_draganddrop.asp # Playwright tests use this for baseURL
+      BASEURL: https://www.w3schools.com/html/html5_draganddrop.asp # Playwright tests use this for baseURL
     environment:
       name: drag-and-drop
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -279,7 +279,7 @@ jobs:
       TESTGROUP: github-api
       GITHUB_USER: ${{ secrets.REPO_USER }}
       API_TOKEN: ${{ secrets.API_TOKEN }}
-      SITE_URL: https://api.github.com # Playwright tests use this for baseURL
+      BASEURL: https://api.github.com # Playwright tests use this for baseURL
     environment:
       name: github-api
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -317,7 +317,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: oauth
-      SITE_URL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
+      BASEURL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
       GMAIL_USER: ${{ secrets.GMAIL_USER }}
       OUTLOOK_USER: ${{ secrets.OUTLOOK_USER }}
       PW_PWD: ${{ secrets.PW_PWD }}
@@ -360,7 +360,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: performance
-      SITE_URL: https://fastestwebsite.net/ # Playwright tests use this for baseURL
+      BASEURL: https://fastestwebsite.net/ # Playwright tests use this for baseURL
     environment:
       name: performance
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -400,7 +400,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: svgomg
-      SITE_URL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL
+      BASEURL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL
     environment:
       name: svgomg
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -439,7 +439,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: todomvc
-      SITE_URL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
+      BASEURL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
     environment:
       name: todomvc
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -478,7 +478,7 @@ jobs:
     container: mcr.microsoft.com/playwright:focal
     env:
       TESTGROUP: visual-comparison
-      SITE_URL: https://playwright.dev # Playwright tests use this for baseURL
+      BASEURL: https://playwright.dev # Playwright tests use this for baseURL
     environment:
       name: visual-comparison
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}

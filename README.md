@@ -51,6 +51,10 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/todomvc](https://testresults.marcusfelling.com/todomvc)
 * [testresults.marcusfelling.com/visual-comparison](https://testresults.marcusfelling.com/visual-comparison)
 
+## Configuration
+
+The [baseURL](https://playwright.dev/docs/api/class-testoptions#test-options-base-url) value for most tests is set as a [workflow environment variable](https://docs.github.com/en/actions/learn-github-actions/environment-variables). This allows flexibility for the URL of the sites tested. By not hardcoding a URL in `page.goTo('')` we can simply pass baseURL without changing the test script e.g. test.site.com -> stage.site.com -> prod.site.com
+
 ## Have a testing scenario you'd like to see included?
 
 Please [open an issue](../../issues/new?assignees=MarcusFelling&labels=testing-scenario-idea&template=testing-scenario-idea-template.md&title=%5BIdea+for+testing+scenario%5D) with details.
