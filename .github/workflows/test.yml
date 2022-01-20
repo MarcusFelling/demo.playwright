@@ -25,6 +25,11 @@ jobs:
         run: |
           npm ci
 
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
+
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -101,6 +106,11 @@ jobs:
         run: |
           npm ci
 
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
+
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -138,6 +148,12 @@ jobs:
         run: |
           npm ci
           npx playwright install
+
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
+
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -173,6 +189,11 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
+
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -218,6 +239,11 @@ jobs:
         run: |
           npm install
 
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
+
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -251,6 +277,11 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
+
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -293,6 +324,11 @@ jobs:
         run: |
           npm ci
 
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
+
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -334,6 +370,11 @@ jobs:
         run: |
           npm ci
 
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
+
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -373,6 +414,11 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
+
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -414,6 +460,11 @@ jobs:
         run: |
           npm ci
 
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
+
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -452,6 +503,11 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
+
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -492,6 +548,11 @@ jobs:
         run: |
           npm ci
 
+      - name: Run eslint
+        run: |
+          npx eslint "**/*.spec.ts"
+          npx eslint "**/*.config.ts"
+          
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
