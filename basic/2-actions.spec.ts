@@ -1,6 +1,6 @@
-import { test, expect } from '@playwright/test';
+import {test, expect} from '@playwright/test';
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach(async ({page}) => {
   await page.goto('https://todomvc.com/examples/vanilla-es6/');
 });
 
@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
  * by the completed items to ensure that the item is not visible anymore.
  * @see https://playwright.dev/docs/api/class-locator
  */
-test('basic interaction', async ({ page }) => {
+test('basic interaction', async ({page}) => {
   const inputBox = page.locator('input.new-todo');
   const todoList = page.locator('.todo-list');
 
@@ -27,7 +27,7 @@ test('basic interaction', async ({ page }) => {
  * Playwright supports different selector engines which you can combine with '>>'.
  * @see https://playwright.dev/docs/selectors
  */
-test('element selectors', async ({ page }) => {
+test('element selectors', async ({page}) => {
   // When no selector engine is specified, Playwright will use the css selector engine.
   await page.type('.header input', 'Learn Playwright');
   // So the selector above is the same as the following:

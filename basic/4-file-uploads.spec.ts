@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import {test, expect} from '@playwright/test';
 
 const fileToUpload = __filename; // '__filename' is the current test file.
 
@@ -7,11 +7,11 @@ const fileToUpload = __filename; // '__filename' is the current test file.
  * input. Once the event was emitted we set the file and submit the form.
  * @see https://playwright.dev/docs/api/class-filechooser
  */
-test('should be able to upload files', async ({ page, context }) => {
+test('should be able to upload files', async ({page, context}) => {
   await page.goto('/file-uploads.html');
   const [fileChooser] = await Promise.all([
     page.waitForEvent('filechooser'),
-    page.click('input')
+    page.click('input'),
   ]);
   await fileChooser.setFiles(fileToUpload);
   await page.click('input[type=submit]');

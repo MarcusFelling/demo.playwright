@@ -1,11 +1,11 @@
-import { test, expect } from '@playwright/test';
+import {test, expect} from '@playwright/test';
 
-test.beforeEach(async ({ page }) => {
+test.beforeEach(async ({page}) => {
   await page.goto('');
 });
 
 test.describe('Oauth tests', () => {
-  test('Should be able to login with Facebook', async ({ page }) => {
+  test('Should be able to login with Facebook', async ({page}) => {
     await page.locator('a.button.facebook').click();
     await page.locator('[placeholder="Email or phone number"]').fill(process.env.OUTLOOK_USER);
     await page.locator('[placeholder="Email or phone number"]').press('Tab');
@@ -13,16 +13,16 @@ test.describe('Oauth tests', () => {
     await page.locator('button:has-text("Log In")').click();
   });
 
-  test('Should be able to login with Google', async ({ page }) => {
+  test('Should be able to login with Google', async ({page}) => {
     await page.locator('a.button.google').click();
     await page.locator('[aria-label="Email or phone"]').fill(process.env.GMAIL_USER);
-    await page.locator('button:has-text("Next")').click()
+    await page.locator('button:has-text("Next")').click();
     await page.locator('[aria-label="Enter your password"]').fill(process.env.PW_PWD);
-    await page.locator('button:has-text("Next") >> nth=0').click()
-  });  
+    await page.locator('button:has-text("Next") >> nth=0').click();
+  });
 });
 
-test.afterEach(async ({ page }) => {
+test.afterEach(async ({page}) => {
   // URL should be changed to collections page after login
   await expect(page).toHaveURL(/.*collections/);
   // Check menu items after login

@@ -1,4 +1,4 @@
-import { PlaywrightTestConfig, devices } from '@playwright/test';
+import {PlaywrightTestConfig} from '@playwright/test';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -16,7 +16,7 @@ const config: PlaywrightTestConfig = {
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 5000
+    timeout: 5000,
   },
 
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -34,7 +34,7 @@ const config: PlaywrightTestConfig = {
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: true,
-    
+
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
 
@@ -44,7 +44,7 @@ const config: PlaywrightTestConfig = {
     acceptDownloads: true,
   },
 
- 
+
   // Folder for test artifacts such as screenshots, videos, traces, etc. */
   outputDir: 'test-results/',
 

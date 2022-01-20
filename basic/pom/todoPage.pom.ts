@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import {Page} from '@playwright/test';
 
 /**
  * This is a Page Object Model (POM) class for the application's Todo page. It
