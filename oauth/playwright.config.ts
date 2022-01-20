@@ -1,4 +1,4 @@
-import { PlaywrightTestConfig, devices } from '@playwright/test';
+import {PlaywrightTestConfig, devices} from '@playwright/test';
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -16,7 +16,7 @@ const config: PlaywrightTestConfig = {
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 500000
+    timeout: 500000,
   },
 
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -56,7 +56,7 @@ const config: PlaywrightTestConfig = {
     {
       name: 'webkit',
       use: {
-        ...devices['Desktop Safari'],        
+        ...devices['Desktop Safari'],
       },
     },
   ],

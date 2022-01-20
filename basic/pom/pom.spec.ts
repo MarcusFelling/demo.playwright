@@ -1,14 +1,14 @@
-import { test, expect } from '@playwright/test';
-import { TodoPage } from './todoPage.pom';
+import {test, expect} from '@playwright/test';
+import {TodoPage} from './todoPage.pom';
 
 test.describe('ToDo App', () => {
-  test('should display zero initial items', async ({ page }) => {
+  test('should display zero initial items', async ({page}) => {
     const todoPage = new TodoPage(page);
     await todoPage.goto();
     await expect(todoPage.listItems).toHaveCount(0);
   });
 
-  test('should be able to add new items', async ({ page }) => {
+  test('should be able to add new items', async ({page}) => {
     const todoPage = new TodoPage(page);
     await todoPage.goto();
     await todoPage.addItem('Example #1');
@@ -16,7 +16,7 @@ test.describe('ToDo App', () => {
     await expect(todoPage.listItems).toHaveText(['Example #1', 'Example #2']);
   });
 
-  test('should be able to mark items as completed', async ({ page }) => {
+  test('should be able to mark items as completed', async ({page}) => {
     const todoPage = new TodoPage(page);
     await todoPage.goto();
     await todoPage.addItem('Example #1');
@@ -26,7 +26,7 @@ test.describe('ToDo App', () => {
     await expect(firstListItem).toHaveClass('completed');
   });
 
-  test('should still show the items after a page reload', async ({ page }) => {
+  test('should still show the items after a page reload', async ({page}) => {
     const todoPage = new TodoPage(page);
     await todoPage.goto();
     await todoPage.addItem('Example #1');
@@ -35,7 +35,7 @@ test.describe('ToDo App', () => {
     await expect(todoPage.listItems).toHaveText(['Example #1']);
   });
 
-  test('should be able to filter by uncompleted items', async ({ page }) => {
+  test('should be able to filter by uncompleted items', async ({page}) => {
     const todoPage = new TodoPage(page);
     await todoPage.goto();
     await todoPage.addItem('Example #1');
@@ -46,7 +46,7 @@ test.describe('ToDo App', () => {
     await expect(todoPage.listItems).toHaveText(['Example #1', 'Example #2']);
   });
 
-  test('should be able to filter by completed items', async ({ page }) => {
+  test('should be able to filter by completed items', async ({page}) => {
     const todoPage = new TodoPage(page);
     await todoPage.goto();
     await todoPage.addItem('Example #1');
@@ -57,7 +57,7 @@ test.describe('ToDo App', () => {
     await expect(todoPage.listItems).toHaveText(['Example #3']);
   });
 
-  test('should be able to delete completed items', async ({ page }) => {
+  test('should be able to delete completed items', async ({page}) => {
     const todoPage = new TodoPage(page);
     await todoPage.goto();
     await todoPage.addItem('Example #1');

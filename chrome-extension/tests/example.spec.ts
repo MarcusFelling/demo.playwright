@@ -4,10 +4,10 @@
  * @see https://playwright.dev/docs/chrome-extensions
  * NOTE: there is not currently support to test extension pop-ups
  * Feature request: https://github.com/microsoft/playwright/issues/5593
- */ 
-import { test, chromium, BrowserContext } from '@playwright/test';
+ */
+import {test, chromium, BrowserContext} from '@playwright/test';
 
-test.describe('chrome extension tests', () => { 
+test.describe('chrome extension tests', () => {
   let browserContext: BrowserContext;
 
   test.beforeEach(async ({}, testInfo) => {
@@ -16,8 +16,8 @@ test.describe('chrome extension tests', () => {
     browserContext = await chromium.launchPersistentContext(userDataDir, {
       args: [
         `--disable-extensions-except=${pathToExtension}`,
-        `--load-extension=${pathToExtension}`
-      ]
+        `--load-extension=${pathToExtension}`,
+      ],
     });
   });
 
@@ -28,7 +28,7 @@ test.describe('chrome extension tests', () => {
   });
 
   test('Should get handle to background page of extension', async () => {
-    const backgroundPage = browserContext.backgroundPages()[0];
+    browserContext.backgroundPages()[0];
     // Test the background page as you would any other page.
   });
 });

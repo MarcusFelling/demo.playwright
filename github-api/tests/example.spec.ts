@@ -6,7 +6,7 @@
  * 2. Run tests that programmatically create new issues.
  * 3. Delete the repo.
  */
-import { test, expect } from '@playwright/test';
+import {test, expect} from '@playwright/test';
 
 const user = process.env.GITHUB_USER;
 const repo = 'Test-Repo-1';
@@ -16,31 +16,31 @@ test.use({
     'Accept': 'application/vnd.github.v3+json',
     // Add authorization token to all requests.
     'Authorization': `token ${process.env.API_TOKEN}`,
-  }
+  },
 });
 
-test.beforeAll(async ({ request }) => {
+test.beforeAll(async ({request}) => {
   // Create repo
   const response = await request.post('/user/repos', {
     data: {
-      name: repo
-    }
+      name: repo,
+    },
   });
   expect(response.ok()).toBeTruthy();
 });
 
-test.afterAll(async ({ request }) => {
+test.afterAll(async ({request}) => {
   // Delete repo
   const response = await request.delete(`/repos/${user}/${repo}`);
   expect(response.ok()).toBeTruthy();
 });
 
-test('should create bug report', async ({ request }) => {
+test('should create bug report', async ({request}) => {
   const newIssue = await request.post(`/repos/${user}/${repo}/issues`, {
     data: {
       title: '[Bug] report 1',
       body: 'Bug description',
-    }
+    },
   });
   expect(newIssue.ok()).toBeTruthy();
 
@@ -48,16 +48,16 @@ test('should create bug report', async ({ request }) => {
   expect(issues.ok()).toBeTruthy();
   expect(await issues.json()).toContainEqual(expect.objectContaining({
     title: '[Bug] report 1',
-    body: 'Bug description'
+    body: 'Bug description',
   }));
 });
 
-test('should create feature request', async ({ request }) => {
+test('should create feature request', async ({request}) => {
   const newIssue = await request.post(`/repos/${user}/${repo}/issues`, {
     data: {
       title: '[Feature] request 1',
       body: 'Feature description',
-    }
+    },
   });
   expect(newIssue.ok()).toBeTruthy();
 
@@ -65,6 +65,6 @@ test('should create feature request', async ({ request }) => {
   expect(issues.ok()).toBeTruthy();
   expect(await issues.json()).toContainEqual(expect.objectContaining({
     title: '[Feature] request 1',
-    body: 'Feature description'
+    body: 'Feature description',
   }));
 });
