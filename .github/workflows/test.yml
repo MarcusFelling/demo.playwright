@@ -212,12 +212,12 @@ jobs:
       - name: Install electron
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          npm cinstall -g electron --unsafe-perm=true --allow-root
+          npm install -g electron --unsafe-perm=true --allow-root
 
       - name: Install dependencies
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          npm cinstall
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
