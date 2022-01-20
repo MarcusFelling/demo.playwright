@@ -23,12 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -66,7 +61,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
+          npm ci
 
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2.22.0
@@ -104,12 +99,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -146,13 +136,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
+          npm ci
           npx playwright install
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -188,12 +173,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -232,17 +212,12 @@ jobs:
       - name: Install electron
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          npm install -g electron --unsafe-perm=true --allow-root
+          npm cinstall -g electron --unsafe-perm=true --allow-root
 
       - name: Install dependencies
         working-directory: ${{ env.TESTGROUP }}
         run: |
-          npm install
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm cinstall
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -276,12 +251,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -322,12 +292,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -368,12 +333,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -413,12 +373,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -458,12 +413,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -502,12 +452,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -546,12 +491,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm i
-
-      - name: Run eslint
-        run: |
-          npx eslint "**/*.spec.ts"
-          npx eslint "**/*.config.ts"
+          npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
