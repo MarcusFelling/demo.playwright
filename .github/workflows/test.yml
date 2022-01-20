@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: Run eslint
         run: |
@@ -66,7 +66,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: run tests
         uses: reactivecircus/android-emulator-runner@v2.22.0
@@ -104,7 +104,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: Run eslint
         run: |
@@ -146,7 +146,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
           npx playwright install
 
       - name: Run eslint
@@ -188,7 +188,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: Run eslint
         run: |
@@ -276,7 +276,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: Run eslint
         run: |
@@ -322,7 +322,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: Run eslint
         run: |
@@ -368,7 +368,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: Run eslint
         run: |
@@ -413,7 +413,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: Run eslint
         run: |
@@ -458,7 +458,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: Run eslint
         run: |
@@ -502,7 +502,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: Run eslint
         run: |
@@ -546,13 +546,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm i
 
       - name: Run eslint
         run: |
           npx eslint "**/*.spec.ts"
           npx eslint "**/*.config.ts"
-          
+
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
