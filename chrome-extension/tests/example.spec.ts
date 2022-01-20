@@ -1,8 +1,10 @@
 /**
-   * In this test we get a handle to the background page
-   * of an extension whose source is located in ./my-extension
-   * @see https://playwright.dev/docs/chrome-extensions
-  */ 
+ * In this test we get a handle to the background page
+ * of an extension whose source is located in ./my-extension
+ * @see https://playwright.dev/docs/chrome-extensions
+ * NOTE: there is not currently support to test extension pop-ups
+ * Feature request: https://github.com/microsoft/playwright/issues/5593
+ */ 
 import { test, chromium, BrowserContext } from '@playwright/test';
 
 test.describe('chrome extension tests', () => { 
