@@ -7,11 +7,11 @@ import {test, expect} from '@playwright/test';
 
 test.describe('comparison tests', () => {
   test.beforeEach(async ({page}) => {
-    await page.goto('');
+    await page.goto('https://playwright.dev/');
   });
 
   test('compare landing page title with golden screenshot', async ({page}) => {
-    expect(await page.locator('.heroTitle_2lCx').screenshot()).toMatchSnapshot('landing.png', {threshold: 0.4});
+    expect(await page.locator('.heroTitle_ohkl').screenshot()).toMatchSnapshot('landing.png', {threshold: 0.4});
   });
 
   test('compare landing page title with golden text file', async ({page}) => {
