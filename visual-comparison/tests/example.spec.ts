@@ -7,7 +7,7 @@ import {test, expect} from '@playwright/test';
 
 test.describe('comparison tests', () => {
   test.beforeEach(async ({page}) => {
-    await page.goto('https://playwright.dev/');
+    await page.goto('');
   });
 
   test('compare landing page title with golden screenshot', async ({page}) => {
