@@ -67,7 +67,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2.23.0
         with:
           working-directory: android
-          api-level: 32
+          api-level: 31
           target: "google_apis"
           script: |
             adb root
@@ -510,7 +510,7 @@ jobs:
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }} # /playwright-report
+          path: ${{ env.TESTGROUP }}/playwright-report
 
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
