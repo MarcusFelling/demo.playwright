@@ -314,6 +314,7 @@ jobs:
   oauthTests:
     name: "oauth tests"
     timeout-minutes: 60
+    if: ${{ false }}  # disable for now for bot detection
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
     env:
