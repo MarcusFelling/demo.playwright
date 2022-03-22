@@ -510,7 +510,7 @@ jobs:
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
+          path: ${{ env.TESTGROUP }} # /playwright-report
 
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
