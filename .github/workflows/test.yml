@@ -64,10 +64,10 @@ jobs:
           npm ci
 
       - name: run tests
-        uses: reactivecircus/android-emulator-runner@v2.22.0
+        uses: reactivecircus/android-emulator-runner@v2.23.0
         with:
           working-directory: android
-          api-level: 30
+          api-level: 32
           target: "google_apis"
           script: |
             adb root
