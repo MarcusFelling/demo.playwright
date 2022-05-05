@@ -18,18 +18,18 @@
   },
   "homepage": "https://github.com/MarcusFelling/Demo.Playwright#readme",
   "devDependencies": {
-    "@playwright/test": "^1.20.0",
+    "@playwright/test": "^1.21.1",
     "@types/express": "^4.17.13",
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "@typescript-eslint/parser": "^5.10.1",
-    "eslint": "^8.7.0",
-    "playwright-lighthouse": "^2.1.0"
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "eslint": "^8.14.0",
+    "playwright-lighthouse": "^2.2.1"
   },
   "dependencies": {
-    "axe-playwright": "^1.1.9",
+    "axe-playwright": "^1.1.11",
     "expect-axe-playwright": "^1.2.1",
     "express": "^4.17.2",
-    "lighthouse": "^9.2.0",
+    "lighthouse": "^9.5.0",
     "node-fetch": "^3.1.0",
     "typescript": "^4.5.5"
   }
