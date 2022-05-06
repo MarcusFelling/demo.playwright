@@ -32,17 +32,13 @@ jobs:
           npx playwright install
           HOME=/root npx playwright test
 
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
           path: |
-            ${{ env.TESTGROUP }}/playwright-report
+            playwright-report
 
   androidTests:
     name: "android tests"
@@ -79,7 +75,7 @@ jobs:
         with:
           name: ${{ env.TESTGROUP }}
           path: |
-            ${{ env.TESTGROUP }}/playwright-report
+            playwright-report
 
   basicTests:
     name: "basic tests"
@@ -108,16 +104,12 @@ jobs:
           npx playwright install        
           HOME=/root npx playwright test
 
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
+          path: playwright-report
 
   chromeExtensionTests:
     name: "chrome-extension tests"
@@ -152,7 +144,7 @@ jobs:
         with:
           name: ${{ env.TESTGROUP }}
           path: |
-            ${{ env.TESTGROUP }}/playwright-report
+            playwright-report
 
   dragAndDropTests:
     name: "drag-and-drop tests"
@@ -182,17 +174,13 @@ jobs:
           npx playwright install        
           HOME=/root npx playwright test
 
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
           path: |
-            ${{ env.TESTGROUP }}/playwright-report
+            playwright-report
 
   electronTests:
     name: "electron tests"
@@ -231,7 +219,7 @@ jobs:
         with:
           name: ${{ env.TESTGROUP }}
           path: |
-            ${{ env.TESTGROUP }}/playwright-report
+            playwright-report
 
   fixturesTests:
     name: "fixtures tests"
@@ -259,17 +247,13 @@ jobs:
         run: |
           HOME=/root npx playwright test test-fixture.spec.ts
 
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
           path: |
-            ${{ env.TESTGROUP }}/playwright-report
+            playwright-report
 
   githubAPITests:
     name: "github-api tests"
@@ -300,21 +284,17 @@ jobs:
         run: |
           HOME=/root npx playwright test
 
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
+          path: playwright-report
 
   oauthTests:
     name: "oauth tests"
     timeout-minutes: 60
-    if: ${{ false }}  # disable for now for bot detection
+    if: ${{ false }} # disable for now for bot detection
     runs-on: ubuntu-20.04
     container: mcr.microsoft.com/playwright:focal
     env:
@@ -343,17 +323,13 @@ jobs:
           npx playwright install        
           HOME=/root npx playwright test
 
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
           path: |
-            ${{ env.TESTGROUP }}/playwright-report
+            playwright-report
 
   performanceTests:
     name: "performance tests"
@@ -383,17 +359,13 @@ jobs:
           npx playwright install        
           HOME=/root npx playwright test
 
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
           path: |
-            ${{ env.TESTGROUP }}/playwright-report
+            playwright-report
 
   svgomgTests:
     name: "svgomg tests"
@@ -423,16 +395,12 @@ jobs:
           npx playwright install        
           HOME=/root npx playwright test
 
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
+          path: playwright-report
 
   todomvcTests:
     name: "todomvc tests"
@@ -462,16 +430,12 @@ jobs:
           npx playwright install        
           HOME=/root npx playwright test
 
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
+          path: playwright-report
 
   visualComparisonTests:
     name: "visual-comparison tests"
@@ -501,16 +465,12 @@ jobs:
           npx playwright install        
           HOME=/root npx playwright test
 
-          # inject link into HTML report
-          LINK="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
-          sed -i "s+/title>+/title>CI Test Run:<a href=$LINK>$LINK</a>+g" playwright-report/index.html
-
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v2
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
-          path: ${{ env.TESTGROUP }}/playwright-report
+          path: playwright-report
 
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
