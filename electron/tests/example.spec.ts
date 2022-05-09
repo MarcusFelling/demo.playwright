@@ -30,5 +30,5 @@ test('app title', async () => {
   // Get the first window that the app opens, wait if necessary.
   const window = await electronApp.firstWindow();
   // Print the title.
-  await expect(window).toHaveTitle('Hello World!');
+  await expect(window).toHaveTitle('DevTools');
 });
