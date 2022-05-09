@@ -47,9 +47,5 @@ const config: PlaywrightTestConfig = {
     acceptDownloads: true,
   },
 
-
-  // Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: 'test-results/',
-
 };
 export default config;
