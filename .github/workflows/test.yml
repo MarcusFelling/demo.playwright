@@ -11,7 +11,7 @@ jobs:
     container: mcr.microsoft.com/playwright:v1.25.2-focal
     env:
       TESTGROUP: accessibility
-      BASEURL: https://www.w3.org/WAI/ # Playwright tests use this for baseURL
+      BASEURL: https://playwright.dev/docs/accessibility-testing # Playwright tests use this for baseURL
     environment:
       name: accessibility
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -26,7 +26,7 @@ jobs:
           npm ci
 
       - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
+        continue-on-error: true
         working-directory: ${{ env.TESTGROUP }}
         run: |
           npx playwright install

@@ -26,8 +26,7 @@
     "playwright-lighthouse": "^2.2.1"
   },
   "dependencies": {
-    "axe-playwright": "^1.1.11",
-    "expect-axe-playwright": "^1.2.1",
+    "@axe-core/playwright": "^4.4.4",
     "express": "^4.17.2",
     "lighthouse": "^9.5.0",
     "node-fetch": "^3.1.0",
