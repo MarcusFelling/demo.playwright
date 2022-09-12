@@ -6,7 +6,7 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 ## Run Playwright example tests
 
-**[accessibility](./accessibility/tests/example.spec.ts)** - runs accessibility checks against [https://www.w3.org](https://www.w3.org)
+**[accessibility](./accessibility/tests/example.spec.ts)** - runs accessibility checks against [https://playwright.dev/docs/accessibility-testing](https://playwright.dev/docs/accessibility-testing)
 
 **[android](./android/tests/example.spec.ts)** - runs a basic test using Android's WebView.
 
