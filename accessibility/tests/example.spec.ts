@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 
 test.describe.parallel('accessibility checks', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('https://playwright.dev/docs/accessibility-testing');
+    await page.goto('');
   });
 
 /**
