@@ -7,7 +7,7 @@ jobs:
   accessibilityTests:
     name: "accessibility tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container: mcr.microsoft.com/playwright:v1.28.1-focal
     env:
       TESTGROUP: accessibility
@@ -80,7 +80,7 @@ jobs:
   basicTests:
     name: "basic tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container: mcr.microsoft.com/playwright:v1.28.1-focal
     env:
       TESTGROUP: basic
@@ -149,7 +149,7 @@ jobs:
   dragAndDropTests:
     name: "drag-and-drop tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container: mcr.microsoft.com/playwright:v1.28.1-focal
     env:
       TESTGROUP: drag-and-drop
@@ -224,7 +224,7 @@ jobs:
   fixturesTests:
     name: "fixtures tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container: mcr.microsoft.com/playwright:v1.28.1-focal
     env:
       TESTGROUP: fixtures
@@ -258,7 +258,7 @@ jobs:
   githubAPITests:
     name: "github-api tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container: mcr.microsoft.com/playwright:v1.28.1-focal
     env:
       TESTGROUP: github-api
@@ -295,7 +295,7 @@ jobs:
     name: "oauth tests"
     timeout-minutes: 60
     if: ${{ false }} # disable for now for bot detection
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container: mcr.microsoft.com/playwright:v1.28.1-focal
     env:
       TESTGROUP: oauth
@@ -334,7 +334,7 @@ jobs:
   performanceTests:
     name: "performance tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container: mcr.microsoft.com/playwright:v1.28.1-focal
     env:
       TESTGROUP: performance
@@ -370,7 +370,7 @@ jobs:
   svgomgTests:
     name: "svgomg tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container: mcr.microsoft.com/playwright:v1.28.1-focal
     env:
       TESTGROUP: svgomg
@@ -405,7 +405,7 @@ jobs:
   todomvcTests:
     name: "todomvc tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container: mcr.microsoft.com/playwright:v1.28.1-focal
     env:
       TESTGROUP: todomvc
@@ -440,7 +440,7 @@ jobs:
   visualComparisonTests:
     name: "visual-comparison tests"
     timeout-minutes: 60
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     container: mcr.microsoft.com/playwright:v1.28.1-focal
     env:
       TESTGROUP: visual-comparison
@@ -490,7 +490,7 @@ jobs:
         todomvcTests,
         visualComparisonTests,
       ]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     if: always()
     steps:
       - name: Download artifacts
