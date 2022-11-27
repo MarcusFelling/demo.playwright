@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -53,7 +53,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -91,7 +91,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -124,7 +124,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -161,7 +161,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -195,7 +195,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install electron
         working-directory: ${{ env.TESTGROUP }}
@@ -235,7 +235,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -272,7 +272,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -310,7 +310,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -346,7 +346,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -382,7 +382,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -417,7 +417,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
@@ -452,7 +452,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v2
         with:
-          node-version: "14.x"
+          node-version: "18.x"
 
       - name: Install dependencies
         run: |
