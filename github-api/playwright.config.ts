@@ -30,7 +30,7 @@ const config: PlaywrightTestConfig = {
     baseURL: process.env.BASEURL,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on',
+    trace: 'off',
   },
 };
 export default config;
