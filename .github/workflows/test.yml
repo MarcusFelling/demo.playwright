@@ -67,16 +67,12 @@ jobs:
         run: |
           npm ci
 
-      - name: run tests
-        uses: reactivecircus/android-emulator-runner@v2.23.0
-        with:
-          working-directory: android
-          api-level: 30
-          target: "google_apis"
-          script: |
-            adb root
-            npx playwright install android
-            HOME=/root npx playwright test
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: true
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          npx playwright install android
+          HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v3
