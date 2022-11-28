@@ -67,6 +67,7 @@ jobs:
           target: "google_apis"
           script: |
             adb root
+            npx playwright install android
             HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
