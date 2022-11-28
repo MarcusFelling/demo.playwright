@@ -18,8 +18,11 @@ jobs:
       name: accessibility
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -52,8 +55,11 @@ jobs:
       name: android
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -91,8 +97,11 @@ jobs:
       name: basic
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -124,8 +133,11 @@ jobs:
       name: chrome-extension
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -161,8 +173,11 @@ jobs:
       name: drag-and-drop
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -195,8 +210,11 @@ jobs:
       name: electron
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -235,8 +253,11 @@ jobs:
       name: fixtures
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -272,8 +293,11 @@ jobs:
       name: github-api
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -310,8 +334,11 @@ jobs:
       name: oauth
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -346,8 +373,11 @@ jobs:
       name: performance
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -382,8 +412,11 @@ jobs:
       name: svgomg
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -417,8 +450,11 @@ jobs:
       name: todomvc
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
@@ -452,8 +488,11 @@ jobs:
       name: visual-comparison
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - uses: actions/setup-node@v3
         with:
           node-version: "18.x"
 
