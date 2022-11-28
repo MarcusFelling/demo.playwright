@@ -67,6 +67,18 @@ jobs:
         run: |
           npm ci
 
+      - name: run tests
+        uses: ReactiveCircus/android-emulator-runner@v2.27.0
+        with:
+          working-directory: android
+          api-level: 30
+          target: "google_apis"
+          script: |
+            adb root
+            adb devices
+            npx playwright install android
+            HOME=/root npx playwright test
+
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: true
         working-directory: ${{ env.TESTGROUP }}
