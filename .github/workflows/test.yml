@@ -10,7 +10,7 @@ jobs:
     name: "accessibility tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.28.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-focal
     env:
       TESTGROUP: accessibility
       BASEURL: https://playwright.dev/docs/accessibility-testing # Playwright tests use this for baseURL
@@ -92,7 +92,7 @@ jobs:
     name: "basic tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.28.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-focal
     env:
       TESTGROUP: basic
     environment:
@@ -167,7 +167,7 @@ jobs:
     name: "drag-and-drop tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.28.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-focal
     env:
       TESTGROUP: drag-and-drop
       BASEURL: https://www.w3schools.com/html/html5_draganddrop.asp # Playwright tests use this for baseURL
@@ -248,7 +248,7 @@ jobs:
     name: "fixtures tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.28.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-focal
     env:
       TESTGROUP: fixtures
     environment:
@@ -285,7 +285,7 @@ jobs:
     name: "github-api tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.28.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-focal
     env:
       TESTGROUP: github-api
       GITHUB_USER: ${{ secrets.REPO_USER }}
@@ -325,7 +325,7 @@ jobs:
     timeout-minutes: 60
     if: ${{ false }} # disable for now for bot detection
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.28.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-focal
     env:
       TESTGROUP: oauth
       BASEURL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
@@ -367,7 +367,7 @@ jobs:
     name: "performance tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.28.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-focal
     env:
       TESTGROUP: performance
       BASEURL: https://fastestwebsite.net/ # Playwright tests use this for baseURL
@@ -406,7 +406,7 @@ jobs:
     name: "svgomg tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.28.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-focal
     env:
       TESTGROUP: svgomg
       BASEURL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL
@@ -444,7 +444,7 @@ jobs:
     name: "todomvc tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.28.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-focal
     env:
       TESTGROUP: todomvc
       BASEURL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
@@ -482,7 +482,7 @@ jobs:
     name: "visual-comparison tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.28.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-focal
     env:
       TESTGROUP: visual-comparison
       BASEURL: https://playwright.dev # Playwright tests use this for baseURL
