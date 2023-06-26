@@ -3,7 +3,6 @@
  * @see https://playwright.dev/docs/test-fixtures#worker-fixtures
  */
 import test from './express-test';
-import fetch from 'node-fetch';
 
 test('fetch 1', async ({port}) => {
   const result = await fetch(`http://localhost:${port}/1`);
