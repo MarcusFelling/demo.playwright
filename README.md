@@ -40,7 +40,6 @@ When the above tests are finished, the results are published to GitHub pages:
 * [testresults.marcusfelling.com/basic](https://testresults.marcusfelling.com/basic)
 * [testresults.marcusfelling.com/chrome-extension](https://testresults.marcusfelling.com/chrome-extension)
 * [testresults.marcusfelling.com/drag-and-drop](https://testresults.marcusfelling.com/drag-and-drop)
-* [testresults.marcusfelling.com/electron](https://testresults.marcusfelling.com/electron)
 * [testresults.marcusfelling.com/fixtures](https://testresults.marcusfelling.com/fixtures)
 * [testresults.marcusfelling.com/github-api](https://testresults.marcusfelling.com/github-api)
 * [testresults.marcusfelling.com/oauth](https://testresults.marcusfelling.com/oauth)
