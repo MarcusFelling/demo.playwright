@@ -14,6 +14,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: accessibility
+      BASEURL: https://playwright.dev/docs/accessibility-testing # Playwright tests use this for baseURL
     environment:
       name: accessibility
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -27,15 +28,6 @@ jobs:
           node-version: 18
           cache: npm
           cache-dependency-path: package-lock.json
-
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-                  
-      - uses: cardinalby/export-env-action@v1
-        with:
-          envFile: '${{ github.workspace }}/${{ env.TESTGROUP }}/.env' 
 
       - name: Install dependencies
         run: npm ci
@@ -185,6 +177,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: drag-and-drop
+      BASEURL: https://www.w3schools.com/html/html5_draganddrop.asp # Playwright tests use this for baseURL
     environment:
       name: drag-and-drop
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -309,6 +302,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: github-api
+      BASEURL: https://api.github.com # Playwright tests use this for baseURL
       GITHUB_USER: ${{ secrets.REPO_USER }}
       API_TOKEN: ${{ secrets.API_TOKEN }}
     environment:
@@ -351,6 +345,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: oauth
+      BASEURL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
       GMAIL_USER: ${{ secrets.GMAIL_USER }}
       OUTLOOK_USER: ${{ secrets.OUTLOOK_USER }}
       PW_PWD: ${{ secrets.PW_PWD }}
@@ -394,6 +389,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: performance
+      BASEURL: https://fastestwebsite.net/ # Playwright tests use this for baseURL
     environment:
       name: performance
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -434,6 +430,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: svgomg
+      BASEURL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL
     environment:
       name: svgomg
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -473,6 +470,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: todomvc
+      BASEURL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
     environment:
       name: todomvc
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
@@ -512,6 +510,7 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: visual-comparison
+      BASEURL: https://playwright.dev # Playwright tests use this for baseURL
     environment:
       name: visual-comparison
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
