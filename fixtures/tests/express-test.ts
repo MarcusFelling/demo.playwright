@@ -36,8 +36,8 @@ const test = base.extend<{}, ExpressWorkerFixtures>({
     // Start the server.
     let server;
     console.log('Starting server...');
-    await new Promise((f) => {
-      server = app.listen(port);
+    await new Promise<void>((resolve) => {
+      server = app.listen(port, () => resolve());
     });
     console.log('Server ready');
 
