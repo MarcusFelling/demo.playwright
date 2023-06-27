@@ -1,36 +1,23 @@
-import {PlaywrightTestConfig} from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 
-/**
- * See https://playwright.dev/docs/test-configuration.
- */
-const config: PlaywrightTestConfig = {
+require('dotenv').config()
 
+export default defineConfig({
   testDir: './tests',
-
-  /* Maximum time one test can run for. */
   timeout: 30 * 1000,
-
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  expect: {
+    timeout: 5000,
+  },
   forbidOnly: !!process.env.CI,
-
-  /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-
-  /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
-
-  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
+    ['list'],
     ['html'],
   ],
-
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
+    actionTimeout: 0,
     baseURL: process.env.BASEURL,
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'off',
+    trace: 'on',
   },
-};
-export default config;
+});

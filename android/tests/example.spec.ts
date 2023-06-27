@@ -17,15 +17,12 @@ test.describe('Run native Android tests', async () => {
     await device.shell('am start org.chromium.webview_shell/.WebViewBrowserActivity');
     // Get the WebView.
     const webview = await device.webView({pkg: 'org.chromium.webview_shell'});
-
     // Fill the input box.
     await device.fill({res: 'org.chromium.webview_shell:id/url_field'}, 'github.com/microsoft/playwright');
     await device.press({res: 'org.chromium.webview_shell:id/url_field'}, 'Enter');
-
     // Work with WebView's page as usual.
     const page = await webview.page();
     console.log(await page.title());
-
     // Close the device.
     await device.close();
   });

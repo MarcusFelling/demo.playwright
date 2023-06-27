@@ -1,11 +1,11 @@
-import {test, expect} from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import fs from 'fs';
 
-test.beforeEach(async ({page}) => {
+test.beforeEach(async ({ page }) => {
   await page.goto('');
 });
 
-test('verify menu items', async ({page}) => {
+test('verify menu items', async ({ page }) => {
   await expect(page.locator('.menu li')).toHaveText([
     'Open SVG',
     'Paste markup',
@@ -15,11 +15,11 @@ test('verify menu items', async ({page}) => {
 });
 
 test.describe('demo tests', () => {
-  test.beforeEach(async ({page}) => {
+  test.beforeEach(async ({ page }) => {
     await page.locator('.menu-item >> text=Demo').click();
   });
 
-  test('verify default global settings', async ({page}) => {
+  test('verify default global settings', async ({ page }) => {
     const menuItems = page.locator('.settings-scroller .global .setting-item-toggle');
     await expect(menuItems).toHaveText([
       'Show original',
@@ -35,7 +35,7 @@ test.describe('demo tests', () => {
     await expect(toggle.locator('text=Multipass')).not.toBeChecked();
   });
 
-  test('verify default features', async ({page}) => {
+  test('verify default features', async ({ page }) => {
     const enabledOptions = [
       'Clean up attribute whitespace',
       'Clean up IDs',
@@ -62,7 +62,7 @@ test.describe('demo tests', () => {
     }
   });
 
-  test('reset settings', async ({page}) => {
+  test('reset settings', async ({ page }) => {
     const showOriginalSetting = page.locator('.setting-item-toggle >> text=Show original');
     await showOriginalSetting.click();
     await expect(showOriginalSetting).toBeChecked();
@@ -70,7 +70,7 @@ test.describe('demo tests', () => {
     await expect(showOriginalSetting).not.toBeChecked();
   });
 
-  test('download result', async ({page}) => {
+  test('download result', async ({ page }) => {
     const downloadButton = page.locator('a[title=Download]');
     await expect(downloadButton).toHaveAttribute('href', /blob/);
     const [download] = await Promise.all([
@@ -83,7 +83,7 @@ test.describe('demo tests', () => {
   });
 });
 
-test('open svg', async ({page}) => {
+test('open svg', async ({ page }) => {
   // Start waiting for the file chooser, then click the button.
   const [fileChooser] = await Promise.all([
     page.waitForEvent('filechooser'),

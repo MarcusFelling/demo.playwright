@@ -5,12 +5,12 @@
  * NOTE: there is not currently support to test extension pop-ups
  * Feature request: https://github.com/microsoft/playwright/issues/5593
  */
-import {test, chromium, BrowserContext} from '@playwright/test';
+import { test, chromium, BrowserContext } from '@playwright/test';
 
 test.describe('chrome extension tests', () => {
   let browserContext: BrowserContext;
 
-  test.beforeEach(async ({}, testInfo) => {
+  test.beforeEach(async ({ }, testInfo) => {
     const pathToExtension = require('path').join(__dirname, '../my-extension');
     const userDataDir = testInfo.outputPath('test-user-data-dir');
     browserContext = await chromium.launchPersistentContext(userDataDir, {

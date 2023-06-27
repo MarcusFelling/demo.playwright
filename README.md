@@ -53,7 +53,7 @@ When the above tests are finished, the results are published to GitHub pages:
 
 ## Configuration
 
-The [baseURL](https://playwright.dev/docs/api/class-testoptions#test-options-base-url) value for most tests is set as a [workflow environment variable](https://docs.github.com/en/actions/learn-github-actions/environment-variables). This allows flexibility for the URL of the sites tested. By not hardcoding a URL in `page.goTo('')` we can simply pass baseURL without changing the test script e.g. test.site.com -> stage.site.com -> prod.site.com
+The [baseURL](https://playwright.dev/docs/api/class-testoptions#test-options-base-url) value for most tests is set via [.env file](https://github.com/motdotla/dotenv) that you'll find at the root of each folder. Typically this file is gitignored; by including it in this demo repo, it makes running and sharing these tests easier.
 
 ## Have a testing scenario you'd like to see included?
 
