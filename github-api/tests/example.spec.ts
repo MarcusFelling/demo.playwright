@@ -6,7 +6,7 @@
  * 2. Run tests that programmatically create new issues.
  * 3. Delete the repo.
  */
-import {test, expect} from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 const user = process.env.GITHUB_USER;
 const repo = 'Test-Repo-1';
@@ -19,7 +19,7 @@ test.use({
   },
 });
 
-test.beforeAll(async ({request}) => {
+test.beforeAll(async ({ request }) => {
   // Create repo
   const response = await request.post('/user/repos', {
     data: {
@@ -29,13 +29,13 @@ test.beforeAll(async ({request}) => {
   expect(response.ok()).toBeTruthy();
 });
 
-test.afterAll(async ({request}) => {
+test.afterAll(async ({ request }) => {
   // Delete repo
   const response = await request.delete(`/repos/${user}/${repo}`);
   expect(response.ok()).toBeTruthy();
 });
 
-test('should create bug report', async ({request}) => {
+test('should create bug report', async ({ request }) => {
   const newIssue = await request.post(`/repos/${user}/${repo}/issues`, {
     data: {
       title: '[Bug] report 1',
@@ -52,7 +52,7 @@ test('should create bug report', async ({request}) => {
   }));
 });
 
-test('should create feature request', async ({request}) => {
+test('should create feature request', async ({ request }) => {
   const newIssue = await request.post(`/repos/${user}/${repo}/issues`, {
     data: {
       title: '[Feature] request 1',

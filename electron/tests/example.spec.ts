@@ -2,13 +2,13 @@
  * Example automation for electron
  * @see https://playwright.dev/docs/api/class-electron
  */
-import {_electron as electron, test, expect, ElectronApplication} from '@playwright/test';
+import { _electron as electron, test, expect, ElectronApplication } from '@playwright/test';
 
 let electronApp: ElectronApplication;
 
 test.beforeEach(async () => {
   // Launch Electron app.
-  electronApp = await electron.launch({args: ['dist/index.js']});
+  electronApp = await electron.launch({ args: ['dist/index.js'] });
 });
 
 test.afterEach(async () => {
@@ -18,7 +18,7 @@ test.afterEach(async () => {
 
 test('app path', async () => {
   // Evaluation expression in the Electron context.
-  const appPath = await electronApp.evaluate(async ({app}) => {
+  const appPath = await electronApp.evaluate(async ({ app }) => {
     // This runs in the main Electron process, parameter here is always
     // the result of the require('electron') in the main app script.
     return app.getAppPath();

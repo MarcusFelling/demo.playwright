@@ -1,26 +1,24 @@
-import {test, chromium} from '@playwright/test';
-import {playAudit} from 'playwright-lighthouse';
+import { test, chromium } from '@playwright/test';
+import { playAudit } from 'playwright-lighthouse';
 
-test.describe.parallel('web performance tests', () => {
-  /**
-   * In this test we use request.timing()
-   * to to return timing information about the request
-   * @see https://playwright.dev/docs/api/class-request#request-timing
-   */
-  test('Get resource timing of request', async ({page}) => {
-    const [request] = await Promise.all([
-      page.waitForEvent('requestfinished'),
-      page.goto(''),
-    ]);
-    console.log(request.timing());
-  });
+test.describe('web performance tests', () => {
+  test('Use Performance API to measure performance', async ({ page }, TestInfo) => {
+    const [performanceTiming] = await page.evaluate(() => {
+      const [timing] = performance.getEntriesByType('navigation');
+      return [timing];
+    });
+    // Get the start to load event end time
+    const startToLoadEventEnd = (performanceTiming as PerformanceNavigationTiming).loadEventEnd - (performanceTiming as PerformanceNavigationTiming).startTime;
+    // Add the performance annotation to the HTML report
+    test.info().annotations.push({ type: 'Performance', description: `"${TestInfo.project.name}" - Navigation start to load event end: ${startToLoadEventEnd}ms` });
+  }); 
 
   /**
    * In this test we start CDPSession to talk to DevTools
    * and a simulate a slow network connection
    * @see https://playwright.dev/docs/api/class-cdpsession
    */
-  test('Simulate slow network connection', async ({page}) => {
+  test('Simulate slow network connection', async ({ page }) => {
     const client = await page.context().newCDPSession(page);
     await client.send('Network.enable');
     await client.send('Network.emulateNetworkConditions', {

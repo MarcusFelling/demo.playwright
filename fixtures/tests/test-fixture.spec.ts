@@ -4,10 +4,10 @@
  */
 import test from './hello-test-fixture';
 
-test('hello', ({hello}) => {
+test('hello', ({ hello }) => {
   test.expect(hello).toBe('Hello');
 });
 
-test('hello world', ({helloWorld}) => {
+test('hello world', ({ helloWorld }) => {
   test.expect(helloWorld).toBe('Hello, world!');
 });
