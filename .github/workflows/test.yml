@@ -28,9 +28,14 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
 
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+                  
       - uses: cardinalby/export-env-action@v1
         with:
-          envFile: '${{ env.TESTGROUP }}/.env' 
+          envFile: '${{ github.workspace }}/${{ env.TESTGROUP }}/.env' 
 
       - name: Install dependencies
         run: npm ci
