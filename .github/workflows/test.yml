@@ -10,7 +10,7 @@ jobs:
     name: "accessibility tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.35.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: accessibility
     environment:
@@ -23,7 +23,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -61,7 +63,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -91,7 +95,7 @@ jobs:
     name: "basic tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.35.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: basic
     environment:
@@ -104,7 +108,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -113,8 +119,7 @@ jobs:
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install        
+        run: |    
           HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
@@ -140,7 +145,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -166,7 +173,7 @@ jobs:
     name: "drag-and-drop tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.35.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: drag-and-drop
     environment:
@@ -179,7 +186,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -188,8 +197,7 @@ jobs:
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install        
+        run: |       
           HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
@@ -216,7 +224,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install electron
         working-directory: ${{ env.TESTGROUP }}
@@ -246,7 +256,7 @@ jobs:
     name: "fixtures tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.35.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: fixtures
     environment:
@@ -259,7 +269,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -283,7 +295,7 @@ jobs:
     name: "github-api tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.35.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: github-api
       GITHUB_USER: ${{ secrets.REPO_USER }}
@@ -298,7 +310,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -322,7 +336,7 @@ jobs:
     timeout-minutes: 60
     if: ${{ false }} # disable for now for bot detection
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.35.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: oauth
       GMAIL_USER: ${{ secrets.GMAIL_USER }}
@@ -338,7 +352,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -347,8 +363,7 @@ jobs:
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install        
+        run: |   
           HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
@@ -363,7 +378,7 @@ jobs:
     name: "performance tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.35.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: performance
     environment:
@@ -376,7 +391,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -385,8 +402,7 @@ jobs:
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install        
+        run: |     
           HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
@@ -401,7 +417,7 @@ jobs:
     name: "svgomg tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.35.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: svgomg
     environment:
@@ -414,7 +430,9 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -423,8 +441,7 @@ jobs:
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install        
+        run: |     
           HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
@@ -438,7 +455,7 @@ jobs:
     name: "todomvc tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.35.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: todomvc
     environment:
@@ -451,7 +468,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -460,8 +479,7 @@ jobs:
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install        
+        run: |      
           HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
@@ -475,7 +493,7 @@ jobs:
     name: "visual-comparison tests"
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    container: mcr.microsoft.com/playwright:v1.35.1-focal
+    container: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: visual-comparison
     environment:
@@ -488,7 +506,9 @@ jobs:
           
       - uses: actions/setup-node@v3
         with:
-          node-version: "18.x"
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: |
@@ -497,8 +517,7 @@ jobs:
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install        
+        run: |      
           HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
