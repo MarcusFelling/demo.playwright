@@ -32,7 +32,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -76,7 +76,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -126,7 +126,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -168,7 +168,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -214,7 +214,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -263,7 +263,7 @@ jobs:
         run: npm ci
           
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -308,7 +308,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -355,7 +355,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -403,7 +403,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -448,7 +448,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -493,7 +493,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -537,7 +537,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
@@ -581,7 +581,7 @@ jobs:
         run: npm ci
 
       - name: Set environment vars via .env file
-        uses: ./.github/actions/dotenv-action
+        uses: falti/dotenv-action@v1.0.4
         with:
           path: .env
 
