@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-jammy
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: accessibility
     environment:
@@ -96,7 +96,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-jammy
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: basic
     environment:
@@ -174,7 +174,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-jammy
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: drag-and-drop
     environment:
@@ -258,7 +258,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-jammy
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: fixtures
     environment:
@@ -298,7 +298,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-jammy
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: github-api
       GITHUB_USER: ${{ secrets.REPO_USER }}
@@ -340,7 +340,7 @@ jobs:
     if: ${{ false }} # disable for now for bot detection
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-jammy
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: oauth
       GMAIL_USER: ${{ secrets.GMAIL_USER }}
@@ -383,7 +383,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-jammy
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: performance
     environment:
@@ -423,7 +423,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-jammy
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: svgomg
     environment:
@@ -462,7 +462,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-jammy
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: todomvc
     environment:
@@ -501,7 +501,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.35.0-jammy
+      image: mcr.microsoft.com/playwright:v1.35.1-jammy
     env:
       TESTGROUP: visual-comparison
     environment:
