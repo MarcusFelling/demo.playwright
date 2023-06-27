@@ -28,13 +28,12 @@ jobs:
           cache: npm
           cache-dependency-path: package-lock.json
 
+      - uses: cardinalby/export-env-action@v1
+        with:
+          envFile: '${{ env.TESTGROUP }}/.env' 
+
       - name: Install dependencies
         run: npm ci
-
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: true
@@ -74,11 +73,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
 
       - name: run tests
         uses: ReactiveCircus/android-emulator-runner@v2.27.0
@@ -125,11 +119,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
-
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -166,11 +155,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -212,11 +196,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -261,11 +240,6 @@ jobs:
       - name: Install dependencies
         working-directory: ${{ env.TESTGROUP }}
         run: npm ci
-          
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -306,11 +280,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -353,11 +322,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -402,11 +366,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
-
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -446,11 +405,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -492,11 +446,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
-
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -536,11 +485,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
-
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
         working-directory: ${{ env.TESTGROUP }}
@@ -579,11 +523,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Set environment vars via .env file
-        uses: falti/dotenv-action@v1.0.4
-        with:
-          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
