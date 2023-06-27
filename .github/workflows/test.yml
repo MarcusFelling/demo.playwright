@@ -29,8 +29,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: true
@@ -69,8 +73,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: run tests
         uses: ReactiveCircus/android-emulator-runner@v2.27.0
@@ -115,8 +123,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -153,8 +165,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -195,8 +211,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -240,8 +260,12 @@ jobs:
 
       - name: Install dependencies
         working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npm ci
+        run: npm ci
+          
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -281,8 +305,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -324,8 +352,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -368,8 +400,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -409,8 +445,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -450,8 +490,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -490,8 +534,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -530,8 +578,12 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
+        run: npm ci
+
+      - name: Set environment vars via .env file
+        uses: ./.github/actions/dotenv-action
+        with:
+          path: .env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
