@@ -34,7 +34,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: true
@@ -78,7 +78,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: run tests
         uses: ReactiveCircus/android-emulator-runner@v2.27.0
@@ -128,7 +128,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -170,7 +170,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -216,7 +216,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -265,7 +265,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -310,7 +310,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -357,7 +357,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -405,7 +405,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -450,7 +450,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -495,7 +495,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -539,7 +539,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
@@ -583,7 +583,7 @@ jobs:
       - name: Set environment vars via .env file
         uses: falti/dotenv-action@v1.0.4
         with:
-          path: ${{ env.TESTGROUP }}/.env
+          path: ./${{ env.TESTGROUP }}/.env
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
