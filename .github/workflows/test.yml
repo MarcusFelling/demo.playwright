@@ -210,50 +210,6 @@ jobs:
           path: |
             playwright-report
 
-  electronTests:
-    name: "electron tests"
-    timeout-minutes: 60
-    runs-on: macos-11
-    env:
-      TESTGROUP: electron
-    environment:
-      name: electron
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install electron
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npm install -g electron --unsafe-perm=true --allow-root
-
-      - name: Install dependencies
-        working-directory: ${{ env.TESTGROUP }}
-        run: npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install
-          HOME=/root npx playwright test
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: |
-            playwright-report
-
   fixturesTests:
     name: "fixtures tests"
     timeout-minutes: 60
@@ -551,7 +507,6 @@ jobs:
         basicTests,
         chromeExtensionTests,
         dragAndDropTests,
-        electronTests,
         fixturesTests,
         githubAPITests,
         oauthTests,

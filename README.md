@@ -16,8 +16,6 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[drag-and-drop](./drag-and-drop/tests/example.spec.ts)** - runs example drag-and-drop test utilizing [https://www.w3schools.com/html/html5_draganddrop.asp](https://www.w3schools.com/html/html5_draganddrop.asp).
 
-**[electron](./electron/tests/example.spec.ts)** - runs a basic test for Electron application, controlling main electron process and working with Electron window.
-
 **[fixtures](./fixtures/tests)** - runs example tests utilizing [test and worker fixtures](https://playwright.dev/docs/test-fixtures).
 
 **[github-api](./github-api/tests/example.spec.ts)** - uses GitHub API to test creation of a new repo, bug, and feature, then deletion of repo.
