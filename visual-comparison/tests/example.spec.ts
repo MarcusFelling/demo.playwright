@@ -5,16 +5,9 @@
  */
 import { test, expect } from '@playwright/test';
 
-test.describe('comparison tests', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('');
-  });
-
+test.describe('visual comparison test', () => {
   test('compare landing page title with golden screenshot', async ({ page }) => {
-    expect(await page.locator('.heroTitle_ohkl').screenshot()).toMatchSnapshot('landing.png', { threshold: 0.4 });
-  });
-
-  test('compare landing page title with golden text file', async ({ page }) => {
-    expect(await page.textContent('.hero__title')).toMatchSnapshot('hero.txt');
+    await page.goto('');
+    await expect(page.locator('.heroTitle_ohkl')).toHaveScreenshot('landing.png', { maxDiffPixels: 1 });
   });
 });
