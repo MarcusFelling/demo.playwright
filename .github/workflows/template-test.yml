@@ -1,0 +1,49 @@
+name: Resuable workflow for tests
+
+on:
+  workflow_call:
+    inputs:
+      TESTGROUP:
+        required: true
+        type: string
+      BASEURL:
+        required: false
+        type: string
+
+jobs:
+  test:
+    name: Run tests - ${{ inputs.TESTGROUP }}
+    environment:
+      name: ${{ inputs.TESTGROUP }}
+      url: https://testresults.marcusfelling.com/${{ inputs.TESTGROUP }}
+    runs-on: ubuntu-22.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.38.0-jammy
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ${{ inputs.TESTGROUP }} Tests
+        continue-on-error: true
+        working-directory: ${{ inputs.TESTGROUP }}
+        run: |
+          npx playwright install
+          HOME=/root npx playwright test
+
+      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: ${{ inputs.TESTGROUP }}
+          path: |
+            playwright-report

@@ -7,46 +7,11 @@ on:
     branches: [main]
 jobs:
   accessibilityTests:
-    name: "accessibility tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-22.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
-    env:
+    uses: ./.github/workflows/template-test.yml   
+    with:
       TESTGROUP: accessibility
-      BASEURL: https://playwright.dev/docs/accessibility-testing # Playwright tests use this for baseURL
-    environment:
-      name: accessibility
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: true
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install
-          HOME=/root npx playwright test
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: |
-            playwright-report
-
+      BASEURL: https://playwright.dev/docs/accessibility-testing
+      
   androidTests:
     name: "android tests"
     if: ${{ false }} # disable for experimental
@@ -92,43 +57,9 @@ jobs:
             playwright-report
 
   basicTests:
-    name: "basic tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-22.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
-    env:
+    uses: ./.github/workflows/template-test.yml   
+    with:
       TESTGROUP: basic
-    environment:
-      name: basic
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install
-          HOME=/root npx playwright test
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: playwright-report
 
   chromeExtensionTests:
     name: "chrome-extension tests"
@@ -170,45 +101,10 @@ jobs:
             playwright-report
 
   dragAndDropTests:
-    name: "drag-and-drop tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-22.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
-    env:
+    uses: ./.github/workflows/template-test.yml   
+    with:
       TESTGROUP: drag-and-drop
-      BASEURL: https://www.w3schools.com/html/html5_draganddrop.asp # Playwright tests use this for baseURL
-    environment:
-      name: drag-and-drop
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install
-          HOME=/root npx playwright test
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: |
-            playwright-report
+      BASEURL: https://www.w3schools.com/html/html5_draganddrop.asp
 
   fixturesTests:
     name: "fixtures tests"
@@ -338,165 +234,28 @@ jobs:
             playwright-report
 
   performanceTests:
-    name: "performance tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-22.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
-    env:
+    uses: ./.github/workflows/template-test.yml   
+    with:
       TESTGROUP: performance
-      BASEURL: https://fastestwebsite.net/ # Playwright tests use this for baseURL
-    environment:
-      name: performance
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install
-          HOME=/root npx playwright test
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: |
-            playwright-report
+      BASEURL: https://fastestwebsite.net/
 
   svgomgTests:
-    name: "svgomg tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-22.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
-    env:
+    uses: ./.github/workflows/template-test.yml   
+    with:
       TESTGROUP: svgomg
-      BASEURL: https://demo.playwright.dev/svgomg # Playwright tests use this for baseURL
-    environment:
-      name: svgomg
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install
-          HOME=/root npx playwright test
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: playwright-report
+      BASEURL: https://demo.playwright.dev/svgomg
 
   todomvcTests:
-    name: "todomvc tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-22.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
-    env:
+    uses: ./.github/workflows/template-test.yml   
+    with:
       TESTGROUP: todomvc
-      BASEURL: https://demo.playwright.dev/todomvc # Playwright tests use this for baseURL
-    environment:
-      name: todomvc
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install
-          HOME=/root npx playwright test
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: playwright-report
+      BASEURL: https://demo.playwright.dev/todomvc
 
   visualComparisonTests:
-    name: "visual-comparison tests"
-    timeout-minutes: 60
-    runs-on: ubuntu-22.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
-    env:
+    uses: ./.github/workflows/template-test.yml   
+    with:
       TESTGROUP: visual-comparison
-      BASEURL: https://playwright.dev # Playwright tests use this for baseURL
-    environment:
-      name: visual-comparison
-      url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: package-lock.json
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run ${{ env.TESTGROUP }} Tests
-        continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
-        run: |
-          npx playwright install
-          HOME=/root npx playwright test --project=chromium
-
-      - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: ${{ env.TESTGROUP }}
-          path: playwright-report
+      BASEURL: https://playwright.dev
 
   publishTestResults:
     name: "Publish Test Results to to testresults.marcusfelling.com"
