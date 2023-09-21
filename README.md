@@ -36,7 +36,6 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 When the above tests are finished, the results are published to GitHub pages:
 
 * [testresults.marcusfelling.com/accessibility](https://testresults.marcusfelling.com/accessibility)
-* [testresults.marcusfelling.com/android](https://testresults.marcusfelling.com/android)
 * [testresults.marcusfelling.com/basic](https://testresults.marcusfelling.com/basic)
 * [testresults.marcusfelling.com/chrome-extension](https://testresults.marcusfelling.com/chrome-extension)
 * [testresults.marcusfelling.com/drag-and-drop](https://testresults.marcusfelling.com/drag-and-drop)
