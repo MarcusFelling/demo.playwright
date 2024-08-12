@@ -83,10 +83,9 @@ jobs:
 
       - name: Run ${{ env.TESTGROUP }} Tests
         continue-on-error: false
-        working-directory: ${{ env.TESTGROUP }}
         run: |
           npx playwright install
-          HOME=/root npx playwright test
+          HOME=/root npx playwright test -c '/basic/playwright.config.ts'
 
   chromeExtensionTests:
     name: "chrome-extension tests"
