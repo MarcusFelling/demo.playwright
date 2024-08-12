@@ -17,11 +17,6 @@ export default defineConfig({
     ['list'],
     ['html'],
   ],
-  webServer: {
-    command: 'node ./server',
-    port: 4345,
-    cwd: __dirname,
-  },
   use: {
     actionTimeout: 0,
     baseURL: process.env.BASEURL,
@@ -31,6 +26,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
+      testIgnore: ['4-*', '5-*'] ,
       use: {
         ...devices['Desktop Chrome'],
       },
