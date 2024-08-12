@@ -85,7 +85,7 @@ jobs:
         continue-on-error: false
         run: |
           npx playwright install
-          HOME=/root npx playwright test -c '/basic/playwright.config.ts'
+          HOME=/root npx playwright test -c './basic/playwright.config.ts'
 
   chromeExtensionTests:
     name: "chrome-extension tests"
