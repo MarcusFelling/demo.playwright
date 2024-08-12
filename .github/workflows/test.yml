@@ -16,7 +16,7 @@ jobs:
     name: "android tests"
     if: ${{ false }} # disable for experimental
     timeout-minutes: 60
-    runs-on: macos-11
+    runs-on: macos-12
     env:
       TESTGROUP: android
     environment:
@@ -59,7 +59,7 @@ jobs:
   chromeExtensionTests:
     name: "chrome-extension tests"
     timeout-minutes: 60
-    runs-on: macos-11
+    runs-on: macos-12
     env:
       TESTGROUP: chrome-extension
     environment:
