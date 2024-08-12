@@ -16,7 +16,7 @@ jobs:
     environment:
       name: ${{ inputs.TESTGROUP }}
       url: https://testresults.marcusfelling.com/${{ inputs.TESTGROUP }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     container:
       image: mcr.microsoft.com/playwright:v1.46.0-jammy
     steps:
