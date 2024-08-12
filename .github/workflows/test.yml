@@ -57,10 +57,36 @@ jobs:
             playwright-report
 
   basicTests:
-    uses: ./.github/workflows/template-test.yml   
-    with:
+    name: "basic tests"
+    timeout-minutes: 60
+    runs-on: ubuntu-24.04
+    container:
+      image: mcr.microsoft.com/playwright:v1.46.0-jammy
+    env:
       TESTGROUP: basic
       BASEURL: https://todomvc.com/examples/javascript-es6/dist/
+    environment:
+      name: basic
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ${{ env.TESTGROUP }} Tests
+        continue-on-error: false
+        working-directory: ${{ env.TESTGROUP }}
+        run: |
+          npx playwright install
+          HOME=/root npx playwright test
 
   chromeExtensionTests:
     name: "chrome-extension tests"
