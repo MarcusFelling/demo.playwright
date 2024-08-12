@@ -7,7 +7,7 @@ const fileToUpload = __filename; // '__filename' is the current test file.
  * input. Once the event was emitted we set the file and submit the form.
  * @see https://playwright.dev/docs/api/class-filechooser
  */
-test('should be able to upload files', async ({page, context}) => {
+test('should be able to upload files', async ({page}) => {
   await page.goto('/file-uploads.html');
   const [fileChooser] = await Promise.all([
     page.waitForEvent('filechooser'),

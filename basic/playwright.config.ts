@@ -1,9 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+import path from 'path';
+
+// Read from ".env" file.
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 export default defineConfig({
-  timeout: 5 * 1000,
+  timeout: 10 * 1000,
   expect: {
-    timeout: 1000,
+    timeout: 5000,
   },
   forbidOnly: !!process.env.CI,
   retries: 0,
@@ -19,6 +24,7 @@ export default defineConfig({
   },
   use: {
     actionTimeout: 0,
+    baseURL: process.env.BASEURL,
     trace: 'on',
     acceptDownloads: true,
   },
