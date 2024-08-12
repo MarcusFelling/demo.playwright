@@ -38,7 +38,7 @@ jobs:
         working-directory: ${{ inputs.TESTGROUP }}
         run: |
           npx playwright install
-          HOME=/root npx playwright test
+          HOME=/root npx playwright test --retries 0
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
         uses: actions/upload-artifact@v3
