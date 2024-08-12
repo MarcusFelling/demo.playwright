@@ -60,6 +60,7 @@ jobs:
     uses: ./.github/workflows/template-test.yml   
     with:
       TESTGROUP: basic
+      BASEURL: https://todomvc.com/examples/javascript-es6/dist/
 
   chromeExtensionTests:
     name: "chrome-extension tests"
