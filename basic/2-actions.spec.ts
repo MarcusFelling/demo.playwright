@@ -29,7 +29,7 @@ test('basic interaction', async ({page}) => {
  */
 test('element selectors', async ({page}) => {
   // When no selector engine is specified, Playwright will use the css selector engine.
-  await page.type('.header input', 'Learn Playwright');
+  await page.fill('.header input', 'Learn Playwright');
   // So the selector above is the same as the following:
   await page.press('css=.header input', 'Enter');
 
@@ -47,5 +47,5 @@ test('element selectors', async ({page}) => {
   await page.click('text=Completed >> visible=true');
 
   // XPath selector
-  await page.click('xpath=//html/body/section/section/label');
+  await page.click('xpath=//html/body/section/main/div/label');
 });

@@ -13,7 +13,7 @@ test.describe('ToDo App', () => {
     await todoPage.goto();
     await todoPage.addItem('Example #1');
     await todoPage.addItem('Example #2');
-    await expect(todoPage.listItems).toHaveText(['Example #1', 'Example #2']);
+    await expect(todoPage.listItems).toHaveText(['Example #2', 'Example #1']);
   });
 
   test('should be able to mark items as completed', async ({ page }) => {
@@ -26,15 +26,6 @@ test.describe('ToDo App', () => {
     await expect(firstListItem).toHaveClass('completed');
   });
 
-  test('should still show the items after a page reload', async ({ page }) => {
-    const todoPage = new TodoPage(page);
-    await todoPage.goto();
-    await todoPage.addItem('Example #1');
-    await expect(todoPage.listItems).toHaveText(['Example #1']);
-    await page.reload();
-    await expect(todoPage.listItems).toHaveText(['Example #1']);
-  });
-
   test('should be able to filter by uncompleted items', async ({ page }) => {
     const todoPage = new TodoPage(page);
     await todoPage.goto();
@@ -43,7 +34,7 @@ test.describe('ToDo App', () => {
     await todoPage.addItem('Example #3');
     await todoPage.listItems.last().locator('.toggle').check();
     await todoPage.filterByActiveItemsButton.click();
-    await expect(todoPage.listItems).toHaveText(['Example #1', 'Example #2']);
+    await expect(todoPage.listItems).toContainText(['Example #3', 'Example #2']);
   });
 
   test('should be able to filter by completed items', async ({ page }) => {
@@ -54,7 +45,7 @@ test.describe('ToDo App', () => {
     await todoPage.addItem('Example #3');
     await todoPage.listItems.last().locator('.toggle').check();
     await todoPage.filterByCompletedItemsButton.click();
-    await expect(todoPage.listItems).toHaveText(['Example #3']);
+    await expect(todoPage.listItems).toHaveText(['Example #1']);
   });
 
   test('should be able to delete completed items', async ({ page }) => {

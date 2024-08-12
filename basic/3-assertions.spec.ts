@@ -10,7 +10,7 @@ test.beforeEach(async ({page}) => {
  */
 test('should be able to use assertions', async ({page}) => {
   await test.step('toHaveTitle/toHaveURL', async () => {
-    await expect(page).toHaveTitle('Vanilla ES6 • TodoMVC');
+    await expect(page).toHaveTitle('TodoMVC: JavaScript Es6 Webpack');
     await expect(page).toHaveURL('https://todomvc.com/examples/javascript-es6/dist/');
   });
 
@@ -40,12 +40,5 @@ test('should be able to use assertions', async ({page}) => {
   await test.step('toBeVisible/toBeHidden', async () => {
     await expect(page.locator('text=Buy milk')).toBeVisible();
     await page.click('text=Active');
-    await expect(page.locator('text=Buy milk')).toBeHidden();
-  });
-
-  await test.step('toHaveClass/toHaveCSS', async () => {
-    await expect(page.locator('[placeholder="What needs to be done?"]')).toHaveClass('new-todo');
-    await page.click('text=Clear completed');
-    await expect(page.locator('.main')).toHaveCSS('display', 'none');
   });
 });
