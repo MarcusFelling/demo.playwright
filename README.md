@@ -31,22 +31,6 @@ The [test.yml](../../actions/workflows/test.yml) GitHub Action workflow is used 
 
 **[visual-comparison](./visual-comparison/tests/example.spec.ts)** - visually compares snapshots with golden screenshots and text content for playwright.dev landing page.
 
-## Publish each HTML report to their respective directory
-
-When the above tests are finished, the results are published to GitHub pages:
-
-* [testresults.marcusfelling.com/accessibility](https://testresults.marcusfelling.com/accessibility)
-* [testresults.marcusfelling.com/basic](https://testresults.marcusfelling.com/basic)
-* [testresults.marcusfelling.com/chrome-extension](https://testresults.marcusfelling.com/chrome-extension)
-* [testresults.marcusfelling.com/drag-and-drop](https://testresults.marcusfelling.com/drag-and-drop)
-* [testresults.marcusfelling.com/fixtures](https://testresults.marcusfelling.com/fixtures)
-* [testresults.marcusfelling.com/github-api](https://testresults.marcusfelling.com/github-api)
-* [testresults.marcusfelling.com/oauth](https://testresults.marcusfelling.com/oauth)
-* [testresults.marcusfelling.com/performance](https://testresults.marcusfelling.com/performance)
-* [testresults.marcusfelling.com/svgomg](https://testresults.marcusfelling.com/svgomg)
-* [testresults.marcusfelling.com/todomvc](https://testresults.marcusfelling.com/todomvc)
-* [testresults.marcusfelling.com/visual-comparison](https://testresults.marcusfelling.com/visual-comparison)
-
 ## Configuration
 
 The [baseURL](https://playwright.dev/docs/api/class-testoptions#test-options-base-url) value for most tests is set via [.env file](https://github.com/motdotla/dotenv) that you'll find at the root of each folder. Typically this file is gitignored; by including it in this demo repo, it makes running and sharing these tests easier.

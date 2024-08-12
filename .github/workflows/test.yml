@@ -111,7 +111,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
+      image: mcr.microsoft.com/playwright:v1.46.0-jammy
     env:
       TESTGROUP: fixtures
     environment:
@@ -151,7 +151,7 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
+      image: mcr.microsoft.com/playwright:v1.46.0-jammy
     env:
       TESTGROUP: github-api
       BASEURL: https://api.github.com # Playwright tests use this for baseURL
@@ -194,7 +194,7 @@ jobs:
     if: ${{ false }} # disable for now for bot detection
     runs-on: ubuntu-22.04
     container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
+      image: mcr.microsoft.com/playwright:v1.46.0-jammy
     env:
       TESTGROUP: oauth
       BASEURL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
@@ -256,39 +256,3 @@ jobs:
     with:
       TESTGROUP: visual-comparison
       BASEURL: https://playwright.dev
-
-  publishTestResults:
-    name: "Publish Test Results to to testresults.marcusfelling.com"
-    needs:
-      [
-        accessibilityTests,
-        androidTests,
-        basicTests,
-        chromeExtensionTests,
-        dragAndDropTests,
-        fixturesTests,
-        githubAPITests,
-        oauthTests,
-        performanceTests,
-        svgomgTests,
-        todomvcTests,
-        visualComparisonTests,
-      ]
-    runs-on: ubuntu-22.04
-    if: always()
-    steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v2
-        id: download
-
-      - name: Publish to GH Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          external_repository: MarcusFelling/demo.reports
-          publish_branch: main
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          publish_dir: ${{steps.download.outputs.download-path}}
-          keep_files: true
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
