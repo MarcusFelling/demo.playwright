@@ -1,9 +1,4 @@
 import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
-import path from 'path';
-
-// Read from ".env" file.
-dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 export default defineConfig({
   timeout: 10 * 1000,
@@ -19,7 +14,7 @@ export default defineConfig({
   ],
   use: {
     actionTimeout: 0,
-    baseURL: process.env.BASEURL,
+    baseURL: 'https://todomvc.com/examples/javascript-es6/dist/',
     trace: 'on',
     acceptDownloads: true,
   },

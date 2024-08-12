@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test';
 
 test.beforeEach(async ({page}) => {
-  await page.goto('');
+  await page.goto('https://todomvc.com/examples/javascript-es6/dist/');
 });
 
 /**
