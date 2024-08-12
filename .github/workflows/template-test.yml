@@ -16,15 +16,15 @@ jobs:
     environment:
       name: ${{ inputs.TESTGROUP }}
       url: https://testresults.marcusfelling.com/${{ inputs.TESTGROUP }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
+      image: mcr.microsoft.com/playwright:v1.46.0-jammy
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: main
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
@@ -38,10 +38,10 @@ jobs:
         working-directory: ${{ inputs.TESTGROUP }}
         run: |
           npx playwright install
-          HOME=/root npx playwright test
+          HOME=/root npx playwright test --retries 0
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ${{ inputs.TESTGROUP }}

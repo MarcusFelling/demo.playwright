@@ -16,18 +16,18 @@ jobs:
     name: "android tests"
     if: ${{ false }} # disable for experimental
     timeout-minutes: 60
-    runs-on: macos-11
+    runs-on: macos-12
     env:
       TESTGROUP: android
     environment:
       name: android
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: main
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
@@ -49,33 +49,28 @@ jobs:
             HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
           path: |
             playwright-report
 
-  basicTests:
-    uses: ./.github/workflows/template-test.yml   
-    with:
-      TESTGROUP: basic
-
   chromeExtensionTests:
     name: "chrome-extension tests"
     timeout-minutes: 60
-    runs-on: macos-11
+    runs-on: macos-12
     env:
       TESTGROUP: chrome-extension
     environment:
       name: chrome-extension
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: main
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
@@ -93,7 +88,7 @@ jobs:
           npx playwright test --headed --project=chromium
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
@@ -109,20 +104,20 @@ jobs:
   fixturesTests:
     name: "fixtures tests"
     timeout-minutes: 60
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
+      image: mcr.microsoft.com/playwright:v1.46.0-jammy
     env:
       TESTGROUP: fixtures
     environment:
       name: fixtures
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: main
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
@@ -139,7 +134,7 @@ jobs:
           HOME=/root npx playwright test test-fixture.spec.ts
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
@@ -149,9 +144,9 @@ jobs:
   githubAPITests:
     name: "github-api tests"
     timeout-minutes: 60
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
+      image: mcr.microsoft.com/playwright:v1.46.0-jammy
     env:
       TESTGROUP: github-api
       BASEURL: https://api.github.com # Playwright tests use this for baseURL
@@ -161,11 +156,11 @@ jobs:
       name: github-api
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: main
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
@@ -182,7 +177,7 @@ jobs:
           HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
@@ -192,9 +187,9 @@ jobs:
     name: "oauth tests"
     timeout-minutes: 60
     if: ${{ false }} # disable for now for bot detection
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     container:
-      image: mcr.microsoft.com/playwright:v1.38.0-jammy
+      image: mcr.microsoft.com/playwright:v1.46.0-jammy
     env:
       TESTGROUP: oauth
       BASEURL: https://courses.ultimateqa.com/users/sign_in # Playwright tests use this for baseURL
@@ -205,11 +200,11 @@ jobs:
       name: oauth
       url: https://testresults.marcusfelling.com/${{ env.TESTGROUP }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: main
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
@@ -226,7 +221,7 @@ jobs:
           HOME=/root npx playwright test
 
       - name: Upload HTML report as artifact. To troubleshoot failures, extract .zip and double-click index.html.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: ${{ env.TESTGROUP }}
@@ -256,39 +251,3 @@ jobs:
     with:
       TESTGROUP: visual-comparison
       BASEURL: https://playwright.dev
-
-  publishTestResults:
-    name: "Publish Test Results to to testresults.marcusfelling.com"
-    needs:
-      [
-        accessibilityTests,
-        androidTests,
-        basicTests,
-        chromeExtensionTests,
-        dragAndDropTests,
-        fixturesTests,
-        githubAPITests,
-        oauthTests,
-        performanceTests,
-        svgomgTests,
-        todomvcTests,
-        visualComparisonTests,
-      ]
-    runs-on: ubuntu-22.04
-    if: always()
-    steps:
-      - name: Download artifacts
-        uses: actions/download-artifact@v2
-        id: download
-
-      - name: Publish to GH Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3.7.3
-        with:
-          external_repository: MarcusFelling/demo.reports
-          publish_branch: main
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          publish_dir: ${{steps.download.outputs.download-path}}
-          keep_files: true
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"

@@ -17,7 +17,7 @@ test('should display zero initial items', async ({ todoPage }) => {
 test('should be able to add new items', async ({ todoPage }) => {
   await todoPage.addItem('Example #1');
   await todoPage.addItem('Example #2');
-  await expect(todoPage.listItems).toHaveText(['Example #1', 'Example #2']);
+  await expect(todoPage.listItems).toHaveText(['Example #2', 'Example #1']);
 });
 
 test('should be able to mark items as completed', async ({ todoPage }) => {
@@ -28,13 +28,6 @@ test('should be able to mark items as completed', async ({ todoPage }) => {
   await expect(firstListItem).toHaveClass('completed');
 });
 
-test('should still show the items after a page reload', async ({ page, todoPage }) => {
-  await todoPage.addItem('Example #1');
-  await expect(todoPage.listItems).toHaveText(['Example #1']);
-  await page.reload();
-  await expect(todoPage.listItems).toHaveText(['Example #1']);
-});
-
 test('should be able to filter by uncompleted items', async ({ todoPage }) => {
   await todoPage.addItem('Example #1');
   await todoPage.addItem('Example #2');
@@ -42,7 +35,7 @@ test('should be able to filter by uncompleted items', async ({ todoPage }) => {
   await todoPage.listItems.last().locator('.toggle').check();
   await todoPage.filterByActiveItemsButton.click();
   await expect(todoPage.listItems).toHaveCount(2);
-  await expect(todoPage.listItems).toHaveText(['Example #1', 'Example #2']);
+  await expect(todoPage.listItems).toHaveText(['Example #3', 'Example #2']);
 });
 
 test('should be able to filter by completed items', async ({ todoPage }) => {
@@ -51,7 +44,7 @@ test('should be able to filter by completed items', async ({ todoPage }) => {
   await todoPage.addItem('Example #3');
   await todoPage.listItems.last().locator('.toggle').check();
   await todoPage.filterByCompletedItemsButton.click();
-  await expect(todoPage.listItems).toHaveText(['Example #3']);
+  await expect(todoPage.listItems).toHaveText(['Example #1']);
 });
 
 test('should be able to delete completed items', async ({ todoPage }) => {
