@@ -1,7 +1,7 @@
 import {test, expect} from '@playwright/test';
 
 test.beforeEach(async ({page}) => {
-  await page.goto('https://todomvc.com/examples/vanilla-es6/');
+  await page.goto('https://todomvc.com/examples/javascript-es6/dist/');
 });
 
 /**
@@ -11,7 +11,7 @@ test.beforeEach(async ({page}) => {
 test('should be able to use assertions', async ({page}) => {
   await test.step('toHaveTitle/toHaveURL', async () => {
     await expect(page).toHaveTitle('Vanilla ES6 • TodoMVC');
-    await expect(page).toHaveURL('https://todomvc.com/examples/vanilla-es6/');
+    await expect(page).toHaveURL('https://todomvc.com/examples/javascript-es6/dist/');
   });
 
   await test.step('toBeEmpty/toHaveValue', async () => {
